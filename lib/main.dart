@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Trips Guard',
       theme: ThemeData(
-        scaffoldBackgroundColor: Color(0xffe6edf2),
+        scaffoldBackgroundColor: const Color(0xffe6edf2),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),

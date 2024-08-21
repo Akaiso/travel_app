@@ -1,51 +1,61 @@
-
-
-
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
- TextStyle normal(){
-return const TextStyle(fontSize: 13,fontWeight: FontWeight.w200);
+TextStyle normal() {
+  return GoogleFonts.openSans(
+      fontSize: 13,
+      fontWeight: FontWeight
+          .w200); //TextStyle(fontSize: 13,fontWeight: FontWeight.w200);
 }
 
-TextStyle boldNormal(){
- return const TextStyle(fontSize: 13,fontWeight: FontWeight.w900);
+TextStyle boldNormal() {
+  return GoogleFonts.openSans(fontSize: 13, fontWeight: FontWeight.w700);
 }
 
-TextStyle blueNormal(){
- return const TextStyle(color: Colors.blue,fontSize: 13,fontWeight: FontWeight.w200);
+TextStyle blueNormal() {
+  return GoogleFonts.openSans(
+      color: Colors.blue, fontSize: 13, fontWeight: FontWeight.w200);
 }
 
-TextStyle whiteNormal(){
- return const TextStyle(color: Colors.white,fontSize: 13,fontWeight: FontWeight.w200);
+TextStyle whiteNormal() {
+  return GoogleFonts.openSans(
+      color: Colors.white, fontSize: 13, fontWeight: FontWeight.w200);
 }
 
-TextStyle subtitle(){
- return const TextStyle(fontSize: 30,fontWeight: FontWeight.w700);
+TextStyle boldWhiteNormal() {
+  return GoogleFonts.openSans(
+      color: Colors.white, fontSize: 13, fontWeight: FontWeight.w400);
 }
 
-TextStyle boldSubtitle2(){
- return const TextStyle(fontSize: 25,fontWeight: FontWeight.w700);
+TextStyle subtitle() {
+  return GoogleFonts.openSans(fontSize: 30, fontWeight: FontWeight.w400);
 }
 
-TextStyle whiteSubtitle(){
- return const TextStyle(fontSize: 30,fontWeight: FontWeight.w700,color: Colors.white);
+TextStyle boldSubtitle2() {
+  return GoogleFonts.openSans(fontSize: 25, fontWeight: FontWeight.w700);
 }
 
-TextStyle? title(){
- return const TextStyle(fontSize: 35,fontWeight: FontWeight.w900);
+TextStyle whiteSubtitle() {
+  return GoogleFonts.openSans(
+      fontSize: 30, fontWeight: FontWeight.w400, color: Colors.white);
 }
 
-TextStyle? small(){
- return const TextStyle(fontSize: 10,fontWeight: FontWeight.normal);
+TextStyle? title() {
+  return GoogleFonts.openSans(fontSize: 35, fontWeight: FontWeight.w600);
 }
 
-TextStyle? boldSmall(){
- return const TextStyle(fontSize: 10,fontWeight: FontWeight.w900);
+TextStyle? small() {
+  return GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.normal);
 }
 
+TextStyle? boldSmall() {
+  return GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.w600);
+}
 
-TextStyle? whiteSmall(){
- return const TextStyle(fontSize: 10,fontWeight: FontWeight.normal);
+TextStyle? boldSmall2() {
+  return GoogleFonts.openSans(fontSize: 13, fontWeight: FontWeight.w700);
+}
+
+TextStyle? whiteSmall() {
+  return GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.normal);
 }

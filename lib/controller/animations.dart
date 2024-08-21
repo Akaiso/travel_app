@@ -3,16 +3,14 @@ import 'package:flutter/material.dart';
 
 class HoverFillAnimation extends StatefulWidget {
   final Widget child;
- final Color startColor;
- final Color endColor;
-
+  final Color startColor;
+  final Color endColor;
 
   const HoverFillAnimation(
       {super.key,
       required this.child,
-     required this.startColor,
-        required this.endColor
-  });
+      required this.startColor,
+      required this.endColor});
 
   @override
   State<HoverFillAnimation> createState() => _HoverFillAnimationState();
@@ -27,7 +25,8 @@ class _HoverFillAnimationState extends State<HoverFillAnimation>
   void initState() {
     // TODO: implement initState
     super.initState();
-    _controller = AnimationController(duration: const Duration(milliseconds: 100),vsync: this);
+    _controller = AnimationController(
+        duration: const Duration(milliseconds: 100), vsync: this);
 
     _colorAnimation = ColorTween(
       begin: widget.startColor,
@@ -35,10 +34,11 @@ class _HoverFillAnimationState extends State<HoverFillAnimation>
     ).animate(_controller);
   }
 
-  void _onEnter(PointerEvent event){
+  void _onEnter(PointerEvent event) {
     _controller.forward();
   }
-  void _onExit(PointerEvent event){
+
+  void _onExit(PointerEvent event) {
     _controller.reverse();
   }
 
@@ -58,7 +58,7 @@ class _HoverFillAnimationState extends State<HoverFillAnimation>
         animation: _colorAnimation,
         builder: (context, child) {
           return Container(
-           color: _colorAnimation.value,
+            color: _colorAnimation.value,
             child: widget.child,
           );
         },

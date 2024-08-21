@@ -1,6 +1,4 @@
-import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MultiImageCarousel extends StatefulWidget {
@@ -50,7 +48,9 @@ class _MultiImageCarouselState extends State<MultiImageCarousel> {
               carouselController: _controller,
               options: CarouselOptions(
                 height: MediaQuery.of(context).size.height / 3,
-                viewportFraction: MediaQuery.of(context).size.width < 800? 0.7 : 0.4, // Show 2.5 images at a time
+                viewportFraction: MediaQuery.of(context).size.width < 800
+                    ? 1
+                    : 0.4, // Show 2.5 images at a time
                 autoPlay: _autoPlay,
                 pauseAutoPlayInFiniteScroll: false,
                 autoPlayInterval:
@@ -61,37 +61,37 @@ class _MultiImageCarouselState extends State<MultiImageCarousel> {
                 //      _currentIndex = index;
                 //   });
 
-                  // Change scrolling direction if at the ends
-                  // if (_currentIndex == 0) {
-                  //   _isScrollingRight = true;
-                  //   if (_autoPlay = false) {
-                  //     _isScrollingRight = false;
-                  //   }
-                  // } else if (_currentIndex == _images.length - 1) {
-                  //   _isScrollingRight = false;
-                  //   _currentIndex = 0;
-                  // }
+                // Change scrolling direction if at the ends
+                // if (_currentIndex == 0) {
+                //   _isScrollingRight = true;
+                //   if (_autoPlay = false) {
+                //     _isScrollingRight = false;
+                //   }
+                // } else if (_currentIndex == _images.length - 1) {
+                //   _isScrollingRight = false;
+                //   _currentIndex = 0;
+                // }
 
-                  // Scroll to the next or previous page based on direction
-                  // if (_isScrollingRight) {
-                  //   Future.delayed(const Duration(seconds: 3), () async {
-                  //     await _controller.nextPage();
-                  //   });
-                  //   // _controller.nextPage();
-                  // } else {
-                  //   Future.delayed(const Duration(seconds: 3), () async {
-                  //     await _controller.previousPage();
-                  //   });
-                  // }
-               // },
+                // Scroll to the next or previous page based on direction
+                // if (_isScrollingRight) {
+                //   Future.delayed(const Duration(seconds: 3), () async {
+                //     await _controller.nextPage();
+                //   });
+                //   // _controller.nextPage();
+                // } else {
+                //   Future.delayed(const Duration(seconds: 3), () async {
+                //     await _controller.previousPage();
+                //   });
+                // }
+                // },
               ),
             ),
           ],
         ),
         Positioned(
           top: 90,
-          child: Container(
-            width: MediaQuery.of(context).size.width -40,
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width - 40,
             child: Center(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -106,7 +106,8 @@ class _MultiImageCarouselState extends State<MultiImageCarousel> {
                         setState(() {
                           _autoPlay = false;
                           // _isScrollingRight = false;
-                        });_controller.previousPage();
+                        });
+                        _controller.previousPage();
                       },
                     ),
                   ),
@@ -117,11 +118,11 @@ class _MultiImageCarouselState extends State<MultiImageCarousel> {
                     child: IconButton(
                         icon: const Icon(Icons.chevron_right),
                         onPressed: () {
-
                           setState(() {
                             _autoPlay = false;
                             // _isScrollingRight = false;
-                          });_controller.nextPage();
+                          });
+                          _controller.nextPage();
                         }),
                   ),
                 ],

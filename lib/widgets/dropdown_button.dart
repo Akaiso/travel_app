@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/utils/colors.dart';
 
@@ -66,7 +65,7 @@ class _LanguageDropdownState extends State<LanguageDropdown> {
           underline: const SizedBox(),
           isExpanded: false,
           value: _selectedValue,
-          style: whiteNormal(),
+          style: boldWhiteNormal(),
           dropdownColor: kBlue(),
           items: const [
             DropdownMenuItem(value: 'English', child: Text('English')),
@@ -92,21 +91,21 @@ class _MyAccountDropdownState extends State<MyAccountDropdown> {
   @override
   Widget build(BuildContext context) {
     return DropdownButton(
-      icon: SizedBox(),
+      icon: const SizedBox(),
         underline: const SizedBox(),
         isExpanded: true,
         value: null,
         style: whiteNormal(),
         dropdownColor: kBlue(),
-        hint: Container(
-          width: 150,
-          child: FittedBox(
+        hint: FittedBox(
+          child: SizedBox(
+            width: 110,
             child:  Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CircleAvatar(child: Icon(Icons.person),),
+                const Expanded(child: CircleAvatar(child: Icon(Icons.person),)),
                 Container(width: 10,),
-                Text('My Account',style: whiteNormal(),),
+                Text('My Account',style: boldWhiteNormal(),),
               ],
             ),
           ),

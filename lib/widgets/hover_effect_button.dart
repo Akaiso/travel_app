@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/utils/colors.dart';
 
@@ -27,7 +26,8 @@ class _HoverEffectButtonState extends State<HoverEffectButton> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(onTap: (){},
+    return InkWell(
+      onTap: () {},
       child: MouseRegion(
         onHover: (_) {
           setState(() {
