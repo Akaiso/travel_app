@@ -28,7 +28,7 @@ class _CardWithDoubleRowsState extends State<CardWithDoubleRows> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(width: 20, color: Colors.transparent),
+        border: Border.all(width: MediaQuery.of(context).size.width < 800? 5:20, color: Colors.transparent),
       ),
       child: Column(
         children: [

@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:travel_app/widgets/buttons/round_scroll_button.dart';
 
 class CardWithSingleRow extends StatefulWidget {
   final Widget headerRow;
@@ -20,66 +23,50 @@ class _CardWithSingleRowState extends State<CardWithSingleRow> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.8,
+      height: 500,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(width: 20, color: Colors.transparent),
+        border: Border.all(width: MediaQuery.of(context).size.width<800?10:20, color: Colors.transparent),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          FittedBox(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                widget.headerRow,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    PhysicalModel(
-                      shape: BoxShape.circle,
-                      color: Colors.transparent,
-                      elevation: 5,
-                      child: CircleAvatar(
-                        child: IconButton(
-                          onPressed: () {
-                            scrollController1.animateTo(
-                                scrollController1.offset -
-                                    MediaQuery.of(context).size.width,
-                                duration: const Duration(seconds: 1),
-                                curve: Curves.easeInOut);
-                          },
-                          icon: const Icon(Icons.chevron_left),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(flex: 2,child: widget.headerRow),const SizedBox(width: 20,),
+              Expanded(flex: 1,
+                child: SizedBox(width: 100,
+                  child: FittedBox(fit: BoxFit.scaleDown,alignment: Alignment.centerRight,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        leftRoundScrollButton(() {
+                          scrollController1.animateTo(
+                              scrollController1.offset -
+                                  MediaQuery.of(context).size.width,
+                              duration: const Duration(seconds: 1),
+                              curve: Curves.easeInOut);
+                        }),
+                        const SizedBox(
+                          width: 20,
                         ),
-                      ),
+                        rightRoundScrollButton(() {
+                          scrollController1.animateTo(
+                              scrollController1.offset + 1000,
+                              duration: const Duration(seconds: 1),
+                              curve: Curves.easeInOut);
+                        },),
+                      ],
                     ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    PhysicalModel(
-                      shape: BoxShape.circle,
-                      color: Colors.transparent,
-                      elevation: 5,
-                      child: CircleAvatar(
-                        child: IconButton(
-                          onPressed: () {
-                            scrollController1.animateTo(
-                                scrollController1.offset + 1000,
-                                duration: const Duration(seconds: 1),
-                                curve: Curves.easeInOut);
-                          },
-                          icon: const Icon(Icons.chevron_right),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
           const SizedBox(
-            height: 10,
+            height: 30,
           ),
           SingleChildScrollView(
             controller: scrollController1,
