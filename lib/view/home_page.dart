@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:travel_app/controller/animations.dart';
 import 'package:travel_app/utils/font.dart';
 import 'package:travel_app/widgets/card_with_double_rows.dart';
 import 'package:travel_app/widgets/card_with_single_row.dart';
@@ -1104,7 +1102,7 @@ class _HomePageState extends State<HomePage>
                 child: CardWithSingleRow(
                   headerRow: FittedBox(
                     child: MediaQuery.of(context).size.width < 800? Text(
-                      'Explore Hotels in \n trending Destinations',
+                      'Explore Hotels in \ntrending Destinations',
                       style: title(),
                     ): Text(
                       'Explore Hotels in trending Destinations',

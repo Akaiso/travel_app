@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:travel_app/widgets/buttons/round_scroll_button.dart';
 
 class CardWithSingleRow extends StatefulWidget {
