@@ -7,3 +7,7 @@ Color kOrange() {
 Color kBlue() {
   return const Color(0xff09a5e3);
 }
+
+Color kGreenFooter(){
+  return const Color(0xff1e3138);
+}

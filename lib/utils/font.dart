@@ -35,6 +35,14 @@ TextStyle kBoldSubtitle2() {
   return GoogleFonts.openSans(fontSize: 25, fontWeight: FontWeight.w700);
 }
 
+TextStyle kBoldWhiteSubtitle2() {
+  return GoogleFonts.openSans(fontSize: 25, fontWeight: FontWeight.w700, color: Colors.white);
+}
+
+TextStyle kBoldWhiteSubtitle3() {
+  return GoogleFonts.openSans(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white);
+}
+
 TextStyle kWhiteSubtitle() {
   return GoogleFonts.openSans(
       fontSize: 30, fontWeight: FontWeight.w400, color: Colors.white);

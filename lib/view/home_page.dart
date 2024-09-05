@@ -6,6 +6,7 @@ import 'package:travel_app/widgets/card_with_single_row.dart';
 import 'package:travel_app/widgets/card_with_two_sections.dart';
 import 'package:travel_app/widgets/dropdown_button.dart';
 import 'package:travel_app/widgets/flight_offers_card.dart';
+import 'package:travel_app/widgets/footer.dart';
 import 'package:travel_app/widgets/footer_appendix.dart';
 import 'package:travel_app/widgets/hover_effect_button.dart';
 import 'package:travel_app/widgets/scroll_to_top_indicator.dart';
@@ -1353,6 +1354,8 @@ class _HomePageState extends State<HomePage>
               const AirlinesLayout1(),
               const SizedBox(height: 30),
               const AirlinesLayout2(),
+              const SizedBox(height: 30),
+              Footer(),
 
 
               const SizedBox(
