@@ -4,37 +4,35 @@ import '../utils/font.dart';
 Widget offeredServicesTabsNavigator(
     VoidCallback onTap, String title, String imageString, Color color) {
   return Builder(
-    builder: (context) => Flexible(
-      child: Container(
-          decoration: BoxDecoration(
-            color: color,
-            borderRadius: MediaQuery.of(context).size.width < 800
-                ? BorderRadius.circular(10)
-                : BorderRadius.circular(0),
-          ),
-          child: InkWell(
-            onTap: onTap,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                      height: 80,
-                      width: 100,
-                      child: Image.asset(
-                        imageString,
-                        fit: BoxFit.cover,
-                      )),
-                  Text(
-                    title,
-                    style: boldSmall2(),
-                  ),
-                ],
-              ),
+    builder: (context) => Container(
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: MediaQuery.of(context).size.width < 800
+              ? BorderRadius.circular(10)
+              : BorderRadius.circular(0),
+        ),
+        child: InkWell(
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                    height: 80,
+                    width: 100,
+                    child: Image.asset(
+                      imageString,
+                      fit: BoxFit.cover,
+                    )),
+                Text(
+                  title,
+                  style: boldSmall2(),
+                ),
+              ],
             ),
-          )),
-    ),
+          ),
+        )),
   );
 }
 
