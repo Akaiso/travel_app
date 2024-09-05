@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/utils/font.dart';
 import 'package:travel_app/widgets/card_with_double_rows.dart';
@@ -5,6 +6,7 @@ import 'package:travel_app/widgets/card_with_single_row.dart';
 import 'package:travel_app/widgets/card_with_two_sections.dart';
 import 'package:travel_app/widgets/dropdown_button.dart';
 import 'package:travel_app/widgets/flight_offers_card.dart';
+import 'package:travel_app/widgets/footer_appendix.dart';
 import 'package:travel_app/widgets/hover_effect_button.dart';
 import 'package:travel_app/widgets/scroll_to_top_indicator.dart';
 
@@ -117,6 +119,7 @@ class _HomePageState extends State<HomePage>
           controller: scrollControllerHome,
           scrollDirection: Axis.vertical,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Stack(
                 clipBehavior: Clip.none,
@@ -667,7 +670,7 @@ class _HomePageState extends State<HomePage>
                               children: [
                                 Text(
                                   'Offers',
-                                  style: boldNormal(), //subtitle(),
+                                  style: kBoldNormal(), //subtitle(),
                                 ),
                                 const SizedBox(
                                   height: 10,
@@ -768,7 +771,7 @@ class _HomePageState extends State<HomePage>
                               children: [
                                 Text(
                                   'Offers',
-                                  style: boldSubtitle2(),
+                                  style: kBoldSubtitle2(),
                                 ),
                                 const SizedBox(
                                   width: 10,
@@ -893,7 +896,7 @@ class _HomePageState extends State<HomePage>
                                 FittedBox(
                                   child: Text(
                                     'Get the Trip Guard app',
-                                    style: title(),
+                                    style: kTitle(),
                                   ),
                                 ),
                                 const SizedBox(
@@ -932,7 +935,7 @@ class _HomePageState extends State<HomePage>
                                     child: Center(
                                       child: FittedBox(
                                         child: Text('Send App Link',
-                                            style: whiteNormal()),
+                                            style: kWhiteNormal()),
                                       ),
                                     ),
                                   ),
@@ -986,7 +989,7 @@ class _HomePageState extends State<HomePage>
                               FittedBox(
                                 child: Text(
                                   'Get the Trip Guard app',
-                                  style: title(),
+                                  style: kTitle(),
                                 ),
                               ),
                               const SizedBox(
@@ -1039,7 +1042,7 @@ class _HomePageState extends State<HomePage>
                                           child: Center(
                                             child: FittedBox(
                                               child: Text('Send App Link',
-                                                  style: whiteNormal()),
+                                                  style: kWhiteNormal()),
                                             ),
                                           ),
                                         ),
@@ -1105,10 +1108,10 @@ class _HomePageState extends State<HomePage>
                   headerRow: FittedBox(
                     child: MediaQuery.of(context).size.width < 800? Text(
                       'Explore Hotels in \ntrending Destinations',
-                      style: title(),
+                      style: kTitle(),
                     ): Text(
                       'Explore Hotels in trending Destinations',
-                      style: title(),
+                      style: kTitle(),
                     ),
                   ),
                   row1: Row(
@@ -1206,7 +1209,7 @@ class _HomePageState extends State<HomePage>
                         FittedBox(fit: BoxFit.scaleDown,
                           child: Text(
                             'Subscribe to travel deals',
-                            style: title(),
+                            style: kTitle(),
                           ),
                         ),
                         const Flexible(
@@ -1251,7 +1254,7 @@ class _HomePageState extends State<HomePage>
                                         ),
                                         child: Center(
                                             child: Text('Subscribe',
-                                                style: whiteNormal())),
+                                                style: kWhiteNormal())),
                                       ),
                                     ),
                                   ),
@@ -1276,7 +1279,7 @@ class _HomePageState extends State<HomePage>
                             FittedBox(
                               child: Text(
                                 'Subscribe to travel deals',
-                                style: title(),
+                                style: kTitle(),
                               ),
                             ),
                             const SizedBox(
@@ -1321,7 +1324,7 @@ class _HomePageState extends State<HomePage>
                                         ),
                                         child: Center(
                                             child: Text('Subscribe',
-                                                style: whiteNormal())),
+                                                style: kWhiteNormal())),
                                       ),
                                     ),
                                   ),
@@ -1333,6 +1336,24 @@ class _HomePageState extends State<HomePage>
                       ),
                     )),
               ),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: FittedBox(child: Text("Cheap flights from Nigeria", style: kBoldSmall2())),
+              ),
+              const SizedBox(height: 20),
+              const CheapFlightsLayout(),
+              const SizedBox(height: 30),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: FittedBox(child: Text("Book Cheap Hotels", style: kBoldSmall2())),
+              ),
+              const BookCheapHotelsLayout(),
+              const SizedBox(height: 50),
+              const AirlinesLayout1(),
+              const SizedBox(height: 30),
+              const AirlinesLayout2(),
+
 
               const SizedBox(
                 height: 300,

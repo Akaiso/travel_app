@@ -57,7 +57,7 @@ class _CheapFlightsLayoutState extends State<CheapFlightsLayout> {
                         children: [
                           Text(
                             'African Flights',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -83,7 +83,7 @@ class _CheapFlightsLayoutState extends State<CheapFlightsLayout> {
                         children: [
                           Text(
                             'European Flights',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -117,7 +117,7 @@ class _CheapFlightsLayoutState extends State<CheapFlightsLayout> {
                         children: [
                           Text(
                             'Asian Flights',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -143,7 +143,7 @@ class _CheapFlightsLayoutState extends State<CheapFlightsLayout> {
                         children: [
                           Text(
                             'North American Flights',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -183,7 +183,7 @@ class _CheapFlightsLayoutState extends State<CheapFlightsLayout> {
                         children: [
                           Text(
                             'African Flights',
-                            style: boldSubtitle2(),
+                              style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -209,7 +209,7 @@ class _CheapFlightsLayoutState extends State<CheapFlightsLayout> {
                         children: [
                           Text(
                             'European Flights',
-                            style: boldSubtitle2(),
+                              style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -235,7 +235,7 @@ class _CheapFlightsLayoutState extends State<CheapFlightsLayout> {
                         children: [
                           Text(
                             'Asian Flights',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -261,7 +261,7 @@ class _CheapFlightsLayoutState extends State<CheapFlightsLayout> {
                         children: [
                           Text(
                             'North American Flights',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -344,7 +344,7 @@ class _BookCheapHotelsLayoutState extends State<BookCheapHotelsLayout> {
                         children: [
                           Text(
                             'African Hotels',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -370,7 +370,7 @@ class _BookCheapHotelsLayoutState extends State<BookCheapHotelsLayout> {
                         children: [
                           Text(
                             'European Hotels',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -404,7 +404,7 @@ class _BookCheapHotelsLayoutState extends State<BookCheapHotelsLayout> {
                         children: [
                           Text(
                             'Asian Hotels',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -430,7 +430,7 @@ class _BookCheapHotelsLayoutState extends State<BookCheapHotelsLayout> {
                         children: [
                           Text(
                             'North American Hotels',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -470,7 +470,7 @@ class _BookCheapHotelsLayoutState extends State<BookCheapHotelsLayout> {
                         children: [
                           Text(
                             'African Hotels',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -496,7 +496,7 @@ class _BookCheapHotelsLayoutState extends State<BookCheapHotelsLayout> {
                         children: [
                           Text(
                             'European Hotels',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -522,7 +522,7 @@ class _BookCheapHotelsLayoutState extends State<BookCheapHotelsLayout> {
                         children: [
                           Text(
                             'Asian Hotels',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -548,7 +548,7 @@ class _BookCheapHotelsLayoutState extends State<BookCheapHotelsLayout> {
                         children: [
                           Text(
                             'North American Hotels',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -625,7 +625,7 @@ class _AirlinesLayout1State extends State<AirlinesLayout1> {
                         children: [
                           Text(
                             'Local Airlines',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -651,7 +651,7 @@ class _AirlinesLayout1State extends State<AirlinesLayout1> {
                         children: [
                           Text(
                             'Domestic Airlines',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -685,7 +685,7 @@ class _AirlinesLayout1State extends State<AirlinesLayout1> {
                         children: [
                           Text(
                             'Airlines in Nigeria',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -711,7 +711,7 @@ class _AirlinesLayout1State extends State<AirlinesLayout1> {
                         children: [
                           Text(
                             'Airlines in Africa',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -751,7 +751,7 @@ class _AirlinesLayout1State extends State<AirlinesLayout1> {
                         children: [
                           Text(
                             'Local Airlines',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -777,7 +777,7 @@ class _AirlinesLayout1State extends State<AirlinesLayout1> {
                         children: [
                           Text(
                             'Domestic Airlines',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -803,7 +803,7 @@ class _AirlinesLayout1State extends State<AirlinesLayout1> {
                         children: [
                           Text(
                             'Airlines in Nigeria',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -829,7 +829,7 @@ class _AirlinesLayout1State extends State<AirlinesLayout1> {
                         children: [
                           Text(
                             'Airlines in Africa',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -911,7 +911,7 @@ class _AirlinesLayout2State extends State<AirlinesLayout2> {
                         children: [
                           Text(
                             'International Airlines',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -937,7 +937,7 @@ class _AirlinesLayout2State extends State<AirlinesLayout2> {
                         children: [
                           Text(
                             'International Airlines in Nigeria',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -971,7 +971,7 @@ class _AirlinesLayout2State extends State<AirlinesLayout2> {
                         children: [
                           Text(
                             'Foreign Airlines',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -997,7 +997,7 @@ class _AirlinesLayout2State extends State<AirlinesLayout2> {
                         children: [
                           Text(
                             'Foreign Airlines in Nigeria',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -1037,7 +1037,7 @@ class _AirlinesLayout2State extends State<AirlinesLayout2> {
                         children: [
                           Text(
                             'International Airlines',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -1063,7 +1063,7 @@ class _AirlinesLayout2State extends State<AirlinesLayout2> {
                         children: [
                           Text(
                             'International Airlines in Nigeria',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -1089,7 +1089,7 @@ class _AirlinesLayout2State extends State<AirlinesLayout2> {
                         children: [
                           Text(
                             'Foreign Airlines',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -1115,7 +1115,7 @@ class _AirlinesLayout2State extends State<AirlinesLayout2> {
                         children: [
                           Text(
                             'Foreign Airlines in Nigeria',
-                            style: boldSubtitle2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,

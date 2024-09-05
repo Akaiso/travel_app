@@ -65,7 +65,7 @@ class _LanguageDropdownState extends State<LanguageDropdown> {
           underline: const SizedBox(),
           isExpanded: false,
           value: _selectedValue,
-          style: boldWhiteNormal(),
+          style: kBoldWhiteNormal(),
           dropdownColor: kBlue(),
           items: const [
             DropdownMenuItem(value: 'English', child: Text('English')),
@@ -95,7 +95,7 @@ class _MyAccountDropdownState extends State<MyAccountDropdown> {
         underline: const SizedBox(),
         isExpanded: true,
         value: null,
-        style: whiteNormal(),
+        style: kWhiteNormal(),
         dropdownColor: kBlue(),
         hint: FittedBox(
           child: SizedBox(
@@ -105,7 +105,7 @@ class _MyAccountDropdownState extends State<MyAccountDropdown> {
               children: [
                 const Expanded(child: CircleAvatar(child: Icon(Icons.person),)),
                 Container(width: 10,),
-                Text('My Account',style: boldWhiteNormal(),),
+                Text('My Account',style: kBoldWhiteNormal(),),
               ],
             ),
           ),

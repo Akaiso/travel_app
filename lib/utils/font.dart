@@ -1,61 +1,61 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-TextStyle normal() {
+TextStyle kNnormal() {
   return GoogleFonts.openSans(
       fontSize: 13,
       fontWeight: FontWeight
           .w200); //TextStyle(fontSize: 13,fontWeight: FontWeight.w200);
 }
 
-TextStyle boldNormal() {
+TextStyle kBoldNormal() {
   return GoogleFonts.openSans(fontSize: 13, fontWeight: FontWeight.w700);
 }
 
-TextStyle blueNormal() {
+TextStyle kBlueNormal() {
   return GoogleFonts.openSans(
       color: Colors.blue, fontSize: 13, fontWeight: FontWeight.w200);
 }
 
-TextStyle whiteNormal() {
+TextStyle kWhiteNormal() {
   return GoogleFonts.openSans(
       color: Colors.white, fontSize: 13, fontWeight: FontWeight.w200);
 }
 
-TextStyle boldWhiteNormal() {
+TextStyle kBoldWhiteNormal() {
   return GoogleFonts.openSans(
       color: Colors.white, fontSize: 13, fontWeight: FontWeight.w400);
 }
 
-TextStyle subtitle() {
+TextStyle kSubtitle() {
   return GoogleFonts.openSans(fontSize: 30, fontWeight: FontWeight.w400);
 }
 
-TextStyle boldSubtitle2() {
+TextStyle kBoldSubtitle2() {
   return GoogleFonts.openSans(fontSize: 25, fontWeight: FontWeight.w700);
 }
 
-TextStyle whiteSubtitle() {
+TextStyle kWhiteSubtitle() {
   return GoogleFonts.openSans(
       fontSize: 30, fontWeight: FontWeight.w400, color: Colors.white);
 }
 
-TextStyle? title() {
+TextStyle? kTitle() {
   return GoogleFonts.openSans(fontSize: 35, fontWeight: FontWeight.w600);
 }
 
-TextStyle? small() {
+TextStyle? kSmall() {
   return GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.normal);
 }
 
-TextStyle? boldSmall() {
+TextStyle? kBoldSmall() {
   return GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.w600);
 }
 
-TextStyle? boldSmall2() {
+TextStyle? kBoldSmall2() {
   return GoogleFonts.openSans(fontSize: 13, fontWeight: FontWeight.w700);
 }
 
-TextStyle? whiteSmall() {
+TextStyle? kWhiteSmall() {
   return GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.normal);
 }

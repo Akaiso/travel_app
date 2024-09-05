@@ -27,7 +27,7 @@ Widget offeredServicesTabsNavigator(
                     )),
                 Text(
                   title,
-                  style: boldSmall2(),
+                  style: kBoldSmall2(),
                 ),
               ],
             ),
