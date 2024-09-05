@@ -195,41 +195,43 @@ class _HomePageState extends State<HomePage>
                                             MediaQuery.of(context).size.width <
                                                     800
                                                 ? const SizedBox.shrink()
-                                                : Row(
-                                                    //mainAxisAlignment: MainAxisAlignment.start,
-                                                    children: [
-                                                      offeredServicesTabsNavigator(
-                                                          () {},
-                                                          " Flight ",
-                                                          'assets/images/flight.png',
-                                                          Colors.white),
-                                                      offeredServicesTabsNavigator(
-                                                          () {},
-                                                          " Stays ",
-                                                          "assets/images/hotel.png",
-                                                          Colors.white),
-                                                      offeredServicesTabsNavigator(
-                                                          () {},
-                                                          " Cruise ",
-                                                          "assets/images/cruise.png",
-                                                          Colors.white),
-                                                      offeredServicesTabsNavigator(
-                                                          () {},
-                                                          " Visa ",
-                                                          "assets/images/visa.png",
-                                                          Colors.white),
-                                                      offeredServicesTabsNavigator(
-                                                          () {},
-                                                          " Rides ",
-                                                          'assets/images/rides.png',
-                                                          Colors.white),
-                                                      offeredServicesTabsNavigator(
-                                                          () {},
-                                                          " Holidays",
-                                                          'assets/images/holiday.png',
-                                                          Colors.white),
-                                                    ],
-                                                  ),
+                                                : FittedBox(
+                                                  child: Row(
+                                                      //mainAxisAlignment: MainAxisAlignment.start,
+                                                      children: [
+                                                        offeredServicesTabsNavigator(
+                                                            () {},
+                                                            " Flight ",
+                                                            'assets/images/flight.png',
+                                                            Colors.white),
+                                                        offeredServicesTabsNavigator(
+                                                            () {},
+                                                            " Stays ",
+                                                            "assets/images/hotel.png",
+                                                            Colors.white),
+                                                        offeredServicesTabsNavigator(
+                                                            () {},
+                                                            " Cruise ",
+                                                            "assets/images/cruise.png",
+                                                            Colors.white),
+                                                        offeredServicesTabsNavigator(
+                                                            () {},
+                                                            " Visa ",
+                                                            "assets/images/visa.png",
+                                                            Colors.white),
+                                                        offeredServicesTabsNavigator(
+                                                            () {},
+                                                            " Rides ",
+                                                            'assets/images/rides.png',
+                                                            Colors.white),
+                                                        offeredServicesTabsNavigator(
+                                                            () {},
+                                                            " Holidays",
+                                                            'assets/images/holiday.png',
+                                                            Colors.white),
+                                                      ],
+                                                    ),
+                                                ),
                                       ),
                                     ),
                                   ),
@@ -898,7 +900,7 @@ class _HomePageState extends State<HomePage>
                                   height: 20,
                                 ),
                                 const Text(
-                                    'Download our Mobile App free today to book your flights, hotels, \n and visas'
+                                    'Download our Mobile App free today to book your flights, hotels, \nand visa '
                                     'and get amazing deals on the go'),
                                 const SizedBox(
                                   height: 20,
@@ -1188,44 +1190,110 @@ class _HomePageState extends State<HomePage>
                 height: 30,
               ),
 
-              ///CARD WITH DOUBLE SECTION N0.2
+              ///CARD WITH LEFT & RIGHT SECTION N0.2
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width < 800? 0: 20.0),
                 child: CardWithDoubleSection(
-                    firstSection: SizedBox(
-                      height: double.infinity,
-                      width: MediaQuery.of(context).size.width * 0.4,
-                      child: Image.asset('assets/images/dubaiwaterline.jpeg'),
-                    ),
-                    secondSection: Padding(
-                      padding: const EdgeInsets.all(30.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Flexible(
-                            child: Text(
-                              'Subscribe to travel deals',
-                              style: title(),
+                    firstSection: MediaQuery.of(context).size.width < 800 ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        SizedBox(
+                         // width: MediaQuery.of(context).size.width * 0.4,
+                          height: 300,
+                          width: double.infinity,
+                          child: Image.asset('assets/images/dubaiwaterline.jpeg',fit: BoxFit.fitHeight),
+                        ),
+                        FittedBox(fit: BoxFit.scaleDown,
+                          child: Text(
+                            'Subscribe to travel deals',
+                            style: title(),
+                          ),
+                        ),
+                        const Flexible(
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal:20.0),
+                            child: Text(textAlign: TextAlign.center,
+                                "Like travel deals,enter your email and we'll send them your way', and visas and get amazing deals on the go"),
+                          ),
+                        ),
+                        const SizedBox(height:20),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal:20.0),
+                          child: SizedBox(
+                           // width: MediaQuery.of(context).size.width,
+                            height: 35,
+                            child: Row(
+                              children: [
+                                Expanded(flex: 3,
+                                  child: TextFormField(
+                                    decoration: InputDecoration(
+                                        contentPadding:
+                                        const EdgeInsets.only(
+                                            left: 10, top: 5),
+                                        hintText:
+                                        'Enter your email address',
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                          BorderRadius.circular(2),
+                                        )),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Expanded(flex: 1,
+                                  child: SizedBox(
+                                    child: InkWell(
+                                      child: Container(padding: const EdgeInsets.symmetric(horizontal: 10, vertical:5),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(2),
+                                          color: Colors.orange,
+                                        ),
+                                        child: Center(
+                                            child: Text('Subscribe',
+                                                style: whiteNormal())),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              ],
                             ),
                           ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          const Text(
-                              "Like travel deals,enter your email and we'll send them your way', \n and visas and get amazing deals on the go"),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          SizedBox(
-                            width: 200,
-                            child: FittedBox(
-                              child: Row(
-                                children: [
-                                  SizedBox(
+                        )
+                      ],
+                    ) : SizedBox(
+                      height: double.infinity,
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      child: Image.asset('assets/images/dubaiwaterline.jpeg', fit: BoxFit.fitHeight,),
+                    ),
+                    secondSection: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            FittedBox(
+                              child: Text(
+                                'Subscribe to travel deals',
+                                style: title(),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            const Flexible(
+                              child: Text(
+                                  "Like travel deals,enter your email and we'll send them your way', and visas and get amazing deals on the go"),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            Row(
+                              children: [
+                                Expanded(flex: 3,
+                                  child: SizedBox(
                                       height: 35,
-                                      width: MediaQuery.of(context).size.width *
-                                          0.2,
                                       child: TextFormField(
                                         decoration: InputDecoration(
                                             contentPadding:
@@ -1238,28 +1306,30 @@ class _HomePageState extends State<HomePage>
                                                   BorderRadius.circular(2),
                                             )),
                                       )),
-                                  const SizedBox(
-                                    width: 30,
-                                  ),
-                                  InkWell(
-                                    child: Container(
-                                      height: 35,
-                                      width: MediaQuery.of(context).size.width /
-                                          15,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(2),
-                                        color: Colors.orange,
+                                ),
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                                Expanded(flex: 2,
+                                  child: SizedBox(
+                                    child: InkWell(
+                                      child: Container(
+                                        height: 35,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(2),
+                                          color: Colors.orange,
+                                        ),
+                                        child: Center(
+                                            child: Text('Subscribe',
+                                                style: whiteNormal())),
                                       ),
-                                      child: Center(
-                                          child: Text('Send App Link',
-                                              style: whiteNormal())),
                                     ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          )
-                        ],
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     )),
               ),
