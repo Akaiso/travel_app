@@ -11,3 +11,7 @@ Color kBlue() {
 Color kGreenFooter(){
   return const Color(0xff1e3138);
 }
+
+Color kScaffoldBg(){
+  return const Color(0xffe6edf2);
+}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/utils/colors.dart';
 import 'package:travel_app/view/home_page.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Trips Guard',
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xffe6edf2),
+        scaffoldBackgroundColor: kScaffoldBg(),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
