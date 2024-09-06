@@ -183,7 +183,7 @@ class _CheapFlightsLayoutState extends State<CheapFlightsLayout> {
                         children: [
                           Text(
                             'African Flights',
-                              style: kBoldSmall2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,
@@ -209,7 +209,7 @@ class _CheapFlightsLayoutState extends State<CheapFlightsLayout> {
                         children: [
                           Text(
                             'European Flights',
-                              style: kBoldSmall2(),
+                            style: kBoldSmall2(),
                           ),
                           const SizedBox(
                             height: 20,

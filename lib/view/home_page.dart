@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/utils/font.dart';
 import 'package:travel_app/widgets/card_with_double_rows.dart';
@@ -200,7 +199,7 @@ class _HomePageState extends State<HomePage>
                                                     800
                                                 ? const SizedBox.shrink()
                                                 : FittedBox(
-                                                  child: Row(
+                                                    child: Row(
                                                       //mainAxisAlignment: MainAxisAlignment.start,
                                                       children: [
                                                         offeredServicesTabsNavigator(
@@ -235,7 +234,7 @@ class _HomePageState extends State<HomePage>
                                                             Colors.white),
                                                       ],
                                                     ),
-                                                ),
+                                                  ),
                                       ),
                                     ),
                                   ),
@@ -1107,13 +1106,15 @@ class _HomePageState extends State<HomePage>
                         MediaQuery.of(context).size.width < 800 ? 0 : 20.0),
                 child: CardWithSingleRow(
                   headerRow: FittedBox(
-                    child: MediaQuery.of(context).size.width < 800? Text(
-                      'Explore Hotels in \ntrending Destinations',
-                      style: kTitle(),
-                    ): Text(
-                      'Explore Hotels in trending Destinations',
-                      style: kTitle(),
-                    ),
+                    child: MediaQuery.of(context).size.width < 800
+                        ? Text(
+                            'Explore Hotels in \ntrending Destinations',
+                            style: kTitle(),
+                          )
+                        : Text(
+                            'Explore Hotels in trending Destinations',
+                            style: kTitle(),
+                          ),
                   ),
                   row1: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -1196,80 +1197,100 @@ class _HomePageState extends State<HomePage>
 
               ///CARD WITH LEFT & RIGHT SECTION N0.2
               Padding(
-                padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width < 800? 0: 20.0),
+                padding: EdgeInsets.symmetric(
+                    horizontal:
+                        MediaQuery.of(context).size.width < 800 ? 0 : 20.0),
                 child: CardWithDoubleSection(
-                    firstSection: MediaQuery.of(context).size.width < 800 ? Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        SizedBox(
-                         // width: MediaQuery.of(context).size.width * 0.4,
-                          height: 300,
-                          width: double.infinity,
-                          child: Image.asset('assets/images/dubaiwaterline.jpeg',fit: BoxFit.fitHeight),
-                        ),
-                        FittedBox(fit: BoxFit.scaleDown,
-                          child: Text(
-                            'Subscribe to travel deals',
-                            style: kTitle(),
-                          ),
-                        ),
-                        const Flexible(
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal:20.0),
-                            child: Text(textAlign: TextAlign.center,
-                                "Like travel deals,enter your email and we'll send them your way', and visas and get amazing deals on the go"),
-                          ),
-                        ),
-                        const SizedBox(height:20),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal:20.0),
-                          child: SizedBox(
-                           // width: MediaQuery.of(context).size.width,
-                            height: 35,
-                            child: Row(
-                              children: [
-                                Expanded(flex: 3,
-                                  child: TextFormField(
-                                    decoration: InputDecoration(
-                                        contentPadding:
-                                        const EdgeInsets.only(
-                                            left: 10, top: 5),
-                                        hintText:
-                                        'Enter your email address',
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                          BorderRadius.circular(2),
-                                        )),
-                                  ),
+                    firstSection: MediaQuery.of(context).size.width < 800
+                        ? Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              SizedBox(
+                                // width: MediaQuery.of(context).size.width * 0.4,
+                                height: 300,
+                                width: double.infinity,
+                                child: Image.asset(
+                                    'assets/images/dubaiwaterline.jpeg',
+                                    fit: BoxFit.fitHeight),
+                              ),
+                              FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  'Subscribe to travel deals',
+                                  style: kTitle(),
                                 ),
-                                const SizedBox(
-                                  width: 10,
+                              ),
+                              const Flexible(
+                                child: Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 20.0),
+                                  child: Text(
+                                      textAlign: TextAlign.center,
+                                      "Like travel deals,enter your email and we'll send them your way', and visas and get amazing deals on the go"),
                                 ),
-                                Expanded(flex: 1,
-                                  child: SizedBox(
-                                    child: InkWell(
-                                      child: Container(padding: const EdgeInsets.symmetric(horizontal: 10, vertical:5),
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(2),
-                                          color: Colors.orange,
+                              ),
+                              const SizedBox(height: 20),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20.0),
+                                child: SizedBox(
+                                  // width: MediaQuery.of(context).size.width,
+                                  height: 35,
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        flex: 3,
+                                        child: TextFormField(
+                                          decoration: InputDecoration(
+                                              contentPadding:
+                                                  const EdgeInsets.only(
+                                                      left: 10, top: 5),
+                                              hintText:
+                                                  'Enter your email address',
+                                              border: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(2),
+                                              )),
                                         ),
-                                        child: Center(
-                                            child: Text('Subscribe',
-                                                style: kWhiteNormal())),
                                       ),
-                                    ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: SizedBox(
+                                          child: InkWell(
+                                            child: Container(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 10,
+                                                      vertical: 5),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(2),
+                                                color: Colors.orange,
+                                              ),
+                                              child: Center(
+                                                  child: Text('Subscribe',
+                                                      style: kWhiteNormal())),
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    ],
                                   ),
-                                )
-                              ],
+                                ),
+                              )
+                            ],
+                          )
+                        : SizedBox(
+                            height: double.infinity,
+                            width: MediaQuery.of(context).size.width * 0.4,
+                            child: Image.asset(
+                              'assets/images/dubaiwaterline.jpeg',
+                              fit: BoxFit.fitHeight,
                             ),
                           ),
-                        )
-                      ],
-                    ) : SizedBox(
-                      height: double.infinity,
-                      width: MediaQuery.of(context).size.width * 0.4,
-                      child: Image.asset('assets/images/dubaiwaterline.jpeg', fit: BoxFit.fitHeight,),
-                    ),
                     secondSection: Center(
                       child: Padding(
                         padding: const EdgeInsets.all(20.0),
@@ -1295,7 +1316,8 @@ class _HomePageState extends State<HomePage>
                             ),
                             Row(
                               children: [
-                                Expanded(flex: 3,
+                                Expanded(
+                                  flex: 3,
                                   child: SizedBox(
                                       height: 35,
                                       child: TextFormField(
@@ -1314,13 +1336,15 @@ class _HomePageState extends State<HomePage>
                                 const SizedBox(
                                   width: 20,
                                 ),
-                                Expanded(flex: 2,
+                                Expanded(
+                                  flex: 2,
                                   child: SizedBox(
                                     child: InkWell(
                                       child: Container(
                                         height: 35,
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(2),
+                                          borderRadius:
+                                              BorderRadius.circular(2),
                                           color: Colors.orange,
                                         ),
                                         child: Center(
@@ -1340,14 +1364,17 @@ class _HomePageState extends State<HomePage>
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: FittedBox(child: Text("Cheap flights from Nigeria", style: kBoldSmall2())),
+                child: FittedBox(
+                    child: Text("Cheap flights from Nigeria",
+                        style: kBoldSmall2())),
               ),
               const SizedBox(height: 20),
               const CheapFlightsLayout(),
               const SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: FittedBox(child: Text("Book Cheap Hotels", style: kBoldSmall2())),
+                child: FittedBox(
+                    child: Text("Book Cheap Hotels", style: kBoldSmall2())),
               ),
               const BookCheapHotelsLayout(),
               const SizedBox(height: 50),
@@ -1355,12 +1382,7 @@ class _HomePageState extends State<HomePage>
               const SizedBox(height: 30),
               const AirlinesLayout2(),
               const SizedBox(height: 30),
-              Footer(),
-
-
-              const SizedBox(
-                height: 300,
-              ),
+              const Footer(),
             ],
           ),
         ),

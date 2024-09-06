@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:travel_app/utils/colors.dart';
 import 'package:travel_app/utils/font.dart';
 import 'package:travel_app/widgets/dropdown_button.dart';
+
+import 'footer_components.dart';
 
 class Footer extends StatefulWidget {
   const Footer({super.key});
@@ -17,13 +17,13 @@ class _FooterState extends State<Footer> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: MediaQuery.of(context).size.width < 800? 850 : 600,
+      height: MediaQuery.of(context).size.width < 800 ? 850 : 600,
       color: kGreenFooter(),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50.0),
         child: MediaQuery.of(context).size.width < 800
             ? Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
                       width: 200,
@@ -34,24 +34,23 @@ class _FooterState extends State<Footer> {
                       )),
                   const SizedBox(height: 10),
                   Row(
-                   // mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        // width: 300,
-                          height: 40,
-                          child:
-                          Image.asset("assets/images/playstore.png")),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      SizedBox(
-                        // width: 300,
-                          height: 40,
-                          child:
-                          Image.asset("assets/images/appstore.png")),
-                    ]
+                      // mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                            // width: 300,
+                            height: 40,
+                            child: Image.asset("assets/images/playstore.png")),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        SizedBox(
+                            // width: 300,
+                            height: 40,
+                            child: Image.asset("assets/images/appstore.png")),
+                      ]),
+                  const SizedBox(
+                    height: 20,
                   ),
-                  const SizedBox(height: 20,),
                   FittedBox(
                     child: Text(
                       "Connect With Us",
@@ -65,173 +64,23 @@ class _FooterState extends State<Footer> {
                     spacing: 10,
                     runSpacing: 15,
                     children: [
-                      Container(
-                        height: 40,
-                        width: 40,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            border: Border.all(
-                                width: 1, color: Colors.white)),
-                        child: Center(
-                          child: SizedBox(
-                              height: 20,
-                              width: 20,
-                              child: Image.asset(
-                                  "assets/images/instagram.png")),
-                        ),
-                      ),
-                      Container(
-                        height: 40,
-                        width: 40,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            border: Border.all(
-                                width: 1, color: Colors.white)),
-                        child: Center(
-                          child: SizedBox(
-                              height: 20,
-                              width: 20,
-                              child: Image.asset(
-                                  "assets/images/whatsapp.png")),
-                        ),
-                      ),
-                      Container(
-                        height: 40,
-                        width: 40,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            border: Border.all(
-                                width: 1, color: Colors.white)),
-                        child: Center(
-                          child: SizedBox(
-                              height: 20,
-                              width: 20,
-                              child: Image.asset(
-                                  "assets/images/linkedin.png")),
-                        ),
-                      ),
-                      Container(
-                        height: 40,
-                        width: 40,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            border: Border.all(
-                                width: 1, color: Colors.white)),
-                        child: Center(
-                          child: SizedBox(
-                              height: 20,
-                              width: 20,
-                              child: Image.asset(
-                                  "assets/images/facebook.png")),
-                        ),
-                      ),
-                      Container(
-                        height: 40,
-                        width: 40,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            border: Border.all(
-                                width: 1, color: Colors.white)),
-                        child: Center(
-                          child: SizedBox(
-                              width: 20,
-                              height: 20,
-                              child: Image.asset(
-                                  "assets/images/youtube.png")),
-                        ),
-                      ),
-                      Container(
-                        height: 40,
-                        width: 40,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            border: Border.all(
-                                width: 1, color: Colors.white)),
-                        child: Center(
-                          child: SizedBox(
-                              height: 20,
-                              width: 20,
-                              child: Image.asset(
-                                  "assets/images/twitter.png")),
-                        ),
-                      ),
+                      socialMedia("assets/images/instagram.png", (){}),
+                      socialMedia("assets/images/whatsapp.png", (){}),
+                      socialMedia("assets/images/linkedin.png", (){}),
+                      socialMedia("assets/images/facebook.png", (){}),
+                      socialMedia("assets/images/youtube.png", (){}),
+                      socialMedia("assets/images/twitter.png", (){}),
                     ],
                   ),
-                  const SizedBox(height: 20,),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Row(
                     children: [
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 20.0),
-                          child: SizedBox(
-                            height: 250,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                FittedBox(
-                                  child: Text(
-                                    'Company',
-                                    style: kBoldWhiteSubtitle3(),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                Text("About Us", style: kWhiteNormal()),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text("Trips Guard Affiliates",
-                                    style: kWhiteNormal()),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text("Refer A customer", style: kWhiteNormal()),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text("Blog", style: kWhiteNormal()),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text("Contact Us", style: kWhiteNormal()),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 20.0),
-                          child: SizedBox(
-                            height: 250,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                FittedBox(
-                                  child: Text(
-                                    'Useful Links',
-                                    style: kBoldWhiteSubtitle3(),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                Text("Privacy Policies", style: kWhiteNormal()),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text("Terms And Conditions", style: kWhiteNormal()),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                      listAndLinks(header: "Company",link1: "About Us", link2:"Trips Guard Affiliates", link3:"Refer A customer", link4: "Blog", link5: "Contact Us" ),
+                      listAndLinks(header: "Useful Links", link1: "Privacy Policies", link2: "Terms And Conditions", link3: '', link4: '', link5: ''),
                     ],
                   ),
-
                   FittedBox(
                     child: Text(
                       "Currency",
@@ -243,17 +92,19 @@ class _FooterState extends State<Footer> {
                       height: 35,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        border:
-                        Border.all(width: 2, color: Colors.white),
+                        border: Border.all(width: 2, color: Colors.white),
                       ),
                       child: const LanguageDropdown()),
                   const SizedBox(height: 30),
-                  Divider(thickness: 0.5, color: kScaffoldBg(),)
+                  Divider(
+                    thickness: 0.5,
+                    color: kScaffoldBg(),
+                  )
                 ],
               )
             : Column(
-              children: [
-                Row(
+                children: [
+                  Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
@@ -275,16 +126,16 @@ class _FooterState extends State<Footer> {
                                 SizedBox(
                                     // width: 300,
                                     height: 40,
-                                    child:
-                                        Image.asset("assets/images/playstore.png")),
+                                    child: Image.asset(
+                                        "assets/images/playstore.png")),
                                 const SizedBox(
                                   height: 10,
                                 ),
                                 SizedBox(
                                     // width: 300,
                                     height: 40,
-                                    child:
-                                        Image.asset("assets/images/appstore.png")),
+                                    child: Image.asset(
+                                        "assets/images/appstore.png")),
                                 const SizedBox(
                                   height: 30,
                                 ),
@@ -301,96 +152,12 @@ class _FooterState extends State<Footer> {
                                   spacing: 10,
                                   runSpacing: 15,
                                   children: [
-                                    Container(
-                                      height: 40,
-                                      width: 40,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(30),
-                                          border: Border.all(
-                                              width: 1, color: Colors.white)),
-                                      child: Center(
-                                        child: SizedBox(
-                                            height: 20,
-                                            width: 20,
-                                            child: Image.asset(
-                                                "assets/images/instagram.png")),
-                                      ),
-                                    ),
-                                    Container(
-                                      height: 40,
-                                      width: 40,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(30),
-                                          border: Border.all(
-                                              width: 1, color: Colors.white)),
-                                      child: Center(
-                                        child: SizedBox(
-                                            height: 20,
-                                            width: 20,
-                                            child: Image.asset(
-                                                "assets/images/whatsapp.png")),
-                                      ),
-                                    ),
-                                    Container(
-                                      height: 40,
-                                      width: 40,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(30),
-                                          border: Border.all(
-                                              width: 1, color: Colors.white)),
-                                      child: Center(
-                                        child: SizedBox(
-                                            height: 20,
-                                            width: 20,
-                                            child: Image.asset(
-                                                "assets/images/linkedin.png")),
-                                      ),
-                                    ),
-                                    Container(
-                                      height: 40,
-                                      width: 40,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(30),
-                                          border: Border.all(
-                                              width: 1, color: Colors.white)),
-                                      child: Center(
-                                        child: SizedBox(
-                                            height: 20,
-                                            width: 20,
-                                            child: Image.asset(
-                                                "assets/images/facebook.png")),
-                                      ),
-                                    ),
-                                    Container(
-                                      height: 40,
-                                      width: 40,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(30),
-                                          border: Border.all(
-                                              width: 1, color: Colors.white)),
-                                      child: Center(
-                                        child: SizedBox(
-                                            width: 20,
-                                            height: 20,
-                                            child: Image.asset(
-                                                "assets/images/youtube.png")),
-                                      ),
-                                    ),
-                                    Container(
-                                      height: 40,
-                                      width: 40,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(30),
-                                          border: Border.all(
-                                              width: 1, color: Colors.white)),
-                                      child: Center(
-                                        child: SizedBox(
-                                            height: 20,
-                                            width: 20,
-                                            child: Image.asset(
-                                                "assets/images/twitter.png")),
-                                      ),
-                                    ),
+                                    socialMedia("assets/images/instagram.png", (){}),
+                                    socialMedia("assets/images/whatsapp.png", (){}),
+                                    socialMedia("assets/images/linkedin.png", (){}),
+                                    socialMedia("assets/images/facebook.png", (){}),
+                                   socialMedia("assets/images/youtube.png", (){}),
+                                    socialMedia("assets/images/twitter.png", (){}),
                                   ],
                                 )
                               ],
@@ -398,75 +165,8 @@ class _FooterState extends State<Footer> {
                           ),
                         ),
                       ),
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 20.0),
-                          child: SizedBox(
-                            height: 250,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                FittedBox(
-                                  child: Text(
-                                    'Company',
-                                    style: kBoldWhiteSubtitle3(),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                Text("About Us", style: kWhiteNormal()),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text("Trips Guard Affiliates",
-                                    style: kWhiteNormal()),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text("Refer A customer", style: kWhiteNormal()),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text("Blog", style: kWhiteNormal()),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text("Contact Us", style: kWhiteNormal()),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 20.0),
-                          child: SizedBox(
-                            height: 250,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                FittedBox(
-                                  child: Text(
-                                    'Useful Links',
-                                    style: kBoldWhiteSubtitle3(),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                Text("Privacy Policies", style: kWhiteNormal()),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text("Terms And Conditions", style: kWhiteNormal()),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                      listAndLinks(header: "Company",link1: "About Us", link2:"Trips Guard Affiliates", link3:"Refer A customer", link4: "Blog", link5: "Contact Us" ),
+                      listAndLinks(header: "Useful Links", link1: "Privacy Policies", link2: "Terms And Conditions", link3: '', link4: '', link5: ''),
                       Expanded(
                         flex: 1,
                         child: SizedBox(
@@ -485,8 +185,8 @@ class _FooterState extends State<Footer> {
                                     height: 35,
                                     width: 200,
                                     decoration: BoxDecoration(
-                                      border:
-                                          Border.all(width: 2, color: Colors.white),
+                                      border: Border.all(
+                                          width: 2, color: Colors.white),
                                     ),
                                     child: const LanguageDropdown())
                               ],
@@ -494,10 +194,15 @@ class _FooterState extends State<Footer> {
                       )
                     ],
                   ),
-                const SizedBox(height: 10,),
-                Divider(thickness: 0.5, color: kScaffoldBg(),)
-              ],
-            ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Divider(
+                    thickness: 0.5,
+                    color: kScaffoldBg(),
+                  )
+                ],
+              ),
       ),
     );
   }
