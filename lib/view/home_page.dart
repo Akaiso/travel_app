@@ -3,6 +3,7 @@ import 'package:travel_app/utils/font.dart';
 import 'package:travel_app/widgets/card_with_double_rows.dart';
 import 'package:travel_app/widgets/card_with_single_row.dart';
 import 'package:travel_app/widgets/card_with_two_sections.dart';
+import 'package:travel_app/widgets/drawer.dart';
 import 'package:travel_app/widgets/dropdown_button.dart';
 import 'package:travel_app/widgets/flight_offers_card.dart';
 import 'package:travel_app/widgets/footer.dart';
@@ -39,6 +40,7 @@ Row flightRowRow = const Row(
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   ScrollController scrollControllerHome = ScrollController();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   Color color = Colors.orange;
   String feel = ' happy ';
@@ -110,8 +112,11 @@ class _HomePageState extends State<HomePage>
         ),
       ],
     );
+
     return SafeArea(
       child: Scaffold(
+        key: _scaffoldKey,
+        drawer: const DrawerClass(),
         floatingActionButton: ScrollToTopButton(
           scrollController: scrollControllerHome,
         ),
@@ -124,6 +129,7 @@ class _HomePageState extends State<HomePage>
               Stack(
                 clipBehavior: Clip.none,
                 children: [
+                  /// APP NAVIGATION BAR
                   Container(
                     height: MediaQuery.of(context).size.width < 800 ? 480 : 740,
                     decoration: const BoxDecoration(
@@ -264,9 +270,15 @@ class _HomePageState extends State<HomePage>
                                                     const Expanded(
                                                         child:
                                                             MyAccountDropdown()),
+
+                                                    ///THE MENU  (HAMBURGER)
                                                     Expanded(
                                                       child: IconButton(
-                                                          onPressed: () {},
+                                                          onPressed: () {
+                                                            _scaffoldKey
+                                                                .currentState
+                                                                ?.openDrawer();
+                                                          },
                                                           icon: const Icon(
                                                             Icons.menu,
                                                             color: Colors.white,
@@ -935,7 +947,7 @@ class _HomePageState extends State<HomePage>
                                     child: Center(
                                       child: FittedBox(
                                         child: Text('Send App Link',
-                                            style: kWhiteNormal()),
+                                            style: kBoldWhiteNormal()),
                                       ),
                                     ),
                                   ),
@@ -1272,7 +1284,8 @@ class _HomePageState extends State<HomePage>
                                               ),
                                               child: Center(
                                                   child: Text('Subscribe',
-                                                      style: kWhiteNormal())),
+                                                      style:
+                                                          kBoldWhiteNormal())),
                                             ),
                                           ),
                                         ),

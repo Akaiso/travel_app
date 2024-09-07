@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:travel_app/utils/colors.dart';
 
 TextStyle kNnormal() {
   return GoogleFonts.openSans(
@@ -67,3 +68,7 @@ TextStyle? kBoldSmall2() {
 TextStyle? kWhiteSmall() {
   return GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.normal);
 }
+
+// TextStyle? drawerStyleText(){
+//   return GoogleFonts.openSans(color: kGreenFooter(), fontSize: 10, fontWeight: FontWeight.w700,);
+// }

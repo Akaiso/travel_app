@@ -112,9 +112,9 @@ class _MyAccountDropdownState extends State<MyAccountDropdown> {
         ),
         items: [
           DropdownMenuItem(
-              onTap: () {}, value: 'Login', child: const Text('Login')),
+              onTap: () {}, value: 'Login', child:  Text('Login',style: kBoldWhiteNormal())),
           DropdownMenuItem(
-              onTap: () {}, value: 'Sign Up', child: const Text('Sign Up')),
+              onTap: () {}, value: 'Sign Up', child:  Text('Sign Up', style: kBoldWhiteNormal())),
         ],
         onChanged: (value) {});
   }
