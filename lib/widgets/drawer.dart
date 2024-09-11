@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import '../utils/colors.dart';
+import '../view/contact_us.dart';
 import 'drawer_components.dart';
 
 class DrawerClass extends StatefulWidget {
@@ -63,7 +66,13 @@ class _DrawerClassState extends State<DrawerClass> {
                   return Column(
                     children: [
                       ListTile(
-                          onTap: drawerFunctions[index],
+                          onTap: (){
+                            if(index == 5){
+                              toWhatsApp(context);
+                            }else {
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=> drawerPages[index]));
+                            }
+                          } ,//(){Get.to(()=>const ContactUs());},//,
                           title: drawerContent[index]),
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20),

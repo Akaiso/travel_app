@@ -12,6 +12,7 @@ import 'package:travel_app/widgets/hover_effect_button.dart';
 import 'package:travel_app/widgets/scroll_to_top_indicator.dart';
 
 import '../widgets/carousel.dart';
+import '../widgets/modal.dart';
 import '../widgets/service_tabs.dart';
 import '../widgets/suggestion_info.dart';
 
@@ -59,11 +60,28 @@ class _HomePageState extends State<HomePage>
   bool _isFlightHovered = false;
   bool _isHotelHovered = false;
 
+  // late VideoPlayerController videoPlayerController;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     flightColor = Colors.black;
+    // videoPlayerController =
+    //     VideoPlayerController.asset("assets/videos/page_loading_video1.mp4");
+    // videoPlayerController.addListener(() {
+    //   setState(() {});
+    // });
+    // videoPlayerController.setLooping(true);
+    // videoPlayerController.initialize().then((value) => setState(() {}));
+    // videoPlayerController.play();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    // videoPlayerController.dispose();
   }
 
   @override
@@ -322,33 +340,62 @@ class _HomePageState extends State<HomePage>
                                       spacing: 4,
                                       runSpacing: 4,
                                       children: [
-                                        offeredServicesTabsNavigator(
-                                            () {},
+                                        offeredServicesTabsNavigator(() {
+                                          showDialog(
+                                              context: this.context,
+                                              builder: (context) =>
+                                              const CustomModal());
+                                        },
                                             " Flight ",
                                             'assets/images/flight.png',
                                             Colors.white),
                                         offeredServicesTabsNavigator(
-                                            () {},
+                                            () {
+                                              showDialog(
+                                                  context: this.context,
+                                                  builder: (context) =>
+                                                  const CustomModal());
+                                            },
                                             " stays ",
                                             "assets/images/hotel.png",
                                             Colors.white),
                                         offeredServicesTabsNavigator(
-                                            () {},
+                                            () {
+                                              showDialog(
+                                                  context: this.context,
+                                                  builder: (context) =>
+                                                  const CustomModal());
+                                            },
                                             " Cruise ",
                                             "assets/images/cruise.png",
                                             Colors.white),
                                         offeredServicesTabsNavigator(
-                                            () {},
+                                            () {
+                                              showDialog(
+                                                  context: this.context,
+                                                  builder: (context) =>
+                                                  const CustomModal());
+                                            },
                                             " Visa ",
                                             "assets/images/visa.png",
                                             Colors.white),
                                         offeredServicesTabsNavigator(
-                                            () {},
+                                            () {
+                                              showDialog(
+                                                  context: this.context,
+                                                  builder: (context) =>
+                                                  const CustomModal());
+                                            },
                                             " Rides ",
                                             'assets/images/rides.png',
                                             Colors.white),
                                         offeredServicesTabsNavigator(
-                                            () {},
+                                            () {
+                                              showDialog(
+                                                  context: this.context,
+                                                  builder: (context) =>
+                                                  const CustomModal());
+                                            },
                                             " Holiday",
                                             'assets/images/holiday.png',
                                             Colors.white),
@@ -1396,6 +1443,15 @@ class _HomePageState extends State<HomePage>
               const AirlinesLayout2(),
               const SizedBox(height: 30),
               const Footer(),
+              // Center(
+              //   child: SizedBox(
+              //     width: 300,
+              //     height: 300,
+              //     child: AspectRatio(
+              //         aspectRatio: videoPlayerController.value.aspectRatio,
+              //         child: VideoPlayer(videoPlayerController)),
+              //   ),
+              // )
             ],
           ),
         ),
