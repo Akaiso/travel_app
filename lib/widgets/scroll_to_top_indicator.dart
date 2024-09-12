@@ -38,6 +38,7 @@ import 'package:travel_app/utils/colors.dart';
 // }
 
 
+
 class ScrollToTopButton extends StatefulWidget {
   final ScrollController scrollController;
   final double showOffset;
@@ -49,7 +50,7 @@ class ScrollToTopButton extends StatefulWidget {
   });
 
   @override
-  _ScrollToTopButtonState createState() => _ScrollToTopButtonState();
+  State<ScrollToTopButton> createState() => _ScrollToTopButtonState();
 }
 
 class _ScrollToTopButtonState extends State<ScrollToTopButton> {

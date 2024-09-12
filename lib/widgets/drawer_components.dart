@@ -1,9 +1,4 @@
-import 'dart:js';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:travel_app/view/contact_us.dart';
 import 'package:travel_app/view/holidays.dart';
@@ -11,7 +6,6 @@ import 'package:travel_app/view/home_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../utils/colors.dart';
-import '../utils/font.dart';
 import '../view/book_flight.dart';
 import '../view/book_hotel.dart';
 import '../view/book_ride.dart';
@@ -145,14 +139,29 @@ List drawerContent = [
 
 List<Widget> drawerPages = [const BookFlight(), const BookHotel(), const BookRide(), const Holidays(), const ContactUs(), const HomePage(), const Chat(), const ContactUs()];
 
-toWhatsApp(context)async{
+Future<void> toWhatsApp(BuildContext context) async{
   const String phoneNumber = "+2348086652587";
-  const String message= "Hello I need assistance!";
-  final Uri whatsappUri = Uri.parse('whatsapp://send?phone=$phoneNumber&text=$message') ;
+  const String message= "Hello I need assistance on Trips Guard!";
+  final Uri whatsappUri = Uri.parse('https://wa.me/$phoneNumber?text=${Uri.encodeFull(message)}'); //('whatsapp://send?phone=$phoneNumber&text=$message') ;
 
-  if(await canLaunchUrl(whatsappUri)){
+  if(await canLaunchUrl(whatsappUri ) ){
     await launchUrl(whatsappUri);
   }else{
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Whatsapp not installed")));
+    if(context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Whatsapp not installed")));
+    }
+  }
+}
+
+Future<void> makePhoneCall(BuildContext context) async{
+  const String phoneNumber = "+2348086652587";
+  final Uri phoneUrl = Uri(scheme: 'tel', path: phoneNumber);
+
+  if(await canLaunchUrl(phoneUrl)){
+    await launchUrl(phoneUrl);
+  }else{
+    if(context.mounted){
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Phone app not installed")));
+    }
   }
 }

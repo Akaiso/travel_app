@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+
 import '../utils/colors.dart';
-import '../view/contact_us.dart';
 import 'drawer_components.dart';
 
 class DrawerClass extends StatefulWidget {
@@ -67,9 +65,12 @@ class _DrawerClassState extends State<DrawerClass> {
                     children: [
                       ListTile(
                           onTap: (){
-                            if(index == 5){
+                            if(index == 5 ){
                               toWhatsApp(context);
-                            }else {
+                            }else if(index == 4 ){
+                              makePhoneCall(context);
+                            }
+                            else {
                               Navigator.push(context, MaterialPageRoute(builder: (context)=> drawerPages[index]));
                             }
                           } ,//(){Get.to(()=>const ContactUs());},//,
