@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/utils/colors.dart';
+import 'package:travel_app/utils/font.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactUs extends StatefulWidget {
@@ -22,7 +24,7 @@ class _ContactUsState extends State<ContactUs> {
 
     final Uri emailUri = Uri(
         scheme: 'mailto',
-        path: 'your-email@example.com',
+        path: 'ebenezercollins@ejece.com',
         query:
             'subject=Contact Us Message from $name&body=$message\n\nEmail: $email');
 
@@ -39,7 +41,7 @@ class _ContactUsState extends State<ContactUs> {
     return  SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Contact Us"),
+          title:  Text("Contact Us", style: kBoldNormal(),),
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -53,7 +55,7 @@ class _ContactUsState extends State<ContactUs> {
                     title: Text(
                         "House 9324, flat 80, Birland Crescent, Kubwa, Abuja. P.O.Box 9001"),
                     subtitle: Text("+234(0) 8080000000 \n+234(0) 8030000000"),
-                    trailing: Text("youremail@ejece.com"),
+                    trailing: Text("ebenezercollins@ejece.com"),
                   ),
                 ),
               ),
@@ -62,79 +64,90 @@ class _ContactUsState extends State<ContactUs> {
                     horizontal: MediaQuery.of(context).size.width < 800
                         ? 20.0
                         : MediaQuery.of(context).size.width / 3.5),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      TextFormField(
-                        controller: _nameController,
-                        decoration: const InputDecoration(
-                          labelText: "Name",
-                          border: OutlineInputBorder(),
-                        ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "please enter your name";
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      TextFormField(
-                        controller: _emailController,
-                        decoration: const InputDecoration(
-                          labelText: "Email",
-                          border: OutlineInputBorder(),
-                        ),
-                        keyboardType: TextInputType.emailAddress,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "Please enter your email";
-                          }
-                          if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-                            return 'Please enter a valid email address';
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      TextFormField(
-                          controller: _messageController,
-                          decoration: const InputDecoration(
-                            labelText: "Message",
-                            border: OutlineInputBorder(),
+                child: Container(
+                  color: Colors.white,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 200,
+                            height: 150,
+                            child: Image.asset("assets/images/logo.png",fit: BoxFit.fitWidth,),
                           ),
-                          maxLines: 5,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return "Please enter a message";
-                            }
-                            return null;
-                          }),
-                      const SizedBox(
-                        height: 16,
+                          TextFormField(
+                            controller: _nameController,
+                            decoration: const InputDecoration(
+                              labelText: "Name",
+                              border: OutlineInputBorder(),
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return "please enter your name";
+                              }
+                              return null;
+                            },
+                          ),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          TextFormField(
+                            controller: _emailController,
+                            decoration: const InputDecoration(
+                              labelText: "Email",
+                              border: OutlineInputBorder(),
+                            ),
+                            keyboardType: TextInputType.emailAddress,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return "Please enter your email";
+                              }
+                              if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                                return 'Please enter a valid email address';
+                              }
+                              return null;
+                            },
+                          ),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          TextFormField(
+                              controller: _messageController,
+                              decoration: const InputDecoration(
+                                labelText: "Message",
+                                border: OutlineInputBorder(),
+                              ),
+                              maxLines: 5,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return "Please enter a message";
+                                }
+                                return null;
+                              }),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                _sendEmail(context);
+                              }
+                            },
+                            style: ButtonStyle(
+                                foregroundColor:
+                                    MaterialStateProperty.all(Colors.white),
+                                backgroundColor:
+                                    MaterialStateProperty.all(kGreenFooter())),
+                            child: const Text("Send Message"),
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                        ],
                       ),
-                      ElevatedButton(
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            _sendEmail(context);
-                          }
-                        },
-                        style: ButtonStyle(
-                            foregroundColor:
-                                MaterialStateProperty.all(Colors.white),
-                            backgroundColor:
-                                MaterialStateProperty.all(kGreenFooter())),
-                        child: const Text("Send Message"),
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               )

@@ -95,8 +95,7 @@ class _MyAccountDropdownState extends State<MyAccountDropdown> {
         underline: const SizedBox(),
         isExpanded: true,
         value: null,
-        style: kWhiteNormal(),
-        dropdownColor: kBlue(),
+        style: kNormal(),
         hint: FittedBox(
           child: SizedBox(
             width: 110,
@@ -112,9 +111,9 @@ class _MyAccountDropdownState extends State<MyAccountDropdown> {
         ),
         items: [
           DropdownMenuItem(
-              onTap: () {}, value: 'Login', child:  Text('Login',style: kBoldWhiteNormal())),
+              onTap: () {}, value: 'Login', child:  Text('Login',style: kNormal())),
           DropdownMenuItem(
-              onTap: () {}, value: 'Sign Up', child:  Text('Sign Up', style: kBoldWhiteNormal())),
+              onTap: () {}, value: 'Sign Up', child:  Text('Sign Up', style: kNormal())),
         ],
         onChanged: (value) {});
   }

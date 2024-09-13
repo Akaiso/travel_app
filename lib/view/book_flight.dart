@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../utils/font.dart';
+
 class BookFlight extends StatefulWidget {
   const BookFlight({super.key});
 
@@ -13,7 +15,7 @@ class _BookFlightState extends State<BookFlight> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        title: const Text("Book your flight"),
+        title:  Text("Book your flight", style: kBoldNormal()),
       ),
       body: const SingleChildScrollView(
         child: Column(

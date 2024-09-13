@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../utils/font.dart';
+
 class BookHotel extends StatefulWidget {
   const BookHotel({super.key});
 
@@ -11,7 +13,7 @@ class _BookHotelState extends State<BookHotel> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
-      appBar: AppBar(title: const Text("Book your Hotel",)),
+      appBar: AppBar(title:  Text("Book your Hotel",style: kBoldNormal())),
     ));
   }
 }

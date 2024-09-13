@@ -9,7 +9,7 @@ import '../utils/colors.dart';
 import '../view/book_flight.dart';
 import '../view/book_hotel.dart';
 import '../view/book_ride.dart';
-import '../view/chart.dart';
+import '../view/chat.dart';
 
 List drawerContent = [
   Row(

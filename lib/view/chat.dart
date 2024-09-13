@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../utils/font.dart';
+
 class Chat extends StatefulWidget {
   const Chat({super.key});
 
@@ -12,7 +14,7 @@ class _ChatState extends State<Chat> {
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
       appBar: AppBar(
-        title: const Text("Chat"),
+        title:  Text("Chat", style: kBoldNormal()),
       ),
     ));
   }

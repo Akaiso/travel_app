@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-TextStyle kNnormal() {
+TextStyle kNormal() {
   return GoogleFonts.openSans(
       fontSize: 13,
       fontWeight: FontWeight
-          .w200); //TextStyle(fontSize: 13,fontWeight: FontWeight.w200);
+          .w500); //TextStyle(fontSize: 13,fontWeight: FontWeight.w200);
 }
 
 TextStyle kBoldNormal() {
