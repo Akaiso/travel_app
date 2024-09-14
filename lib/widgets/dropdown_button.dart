@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/utils/colors.dart';
+import 'package:travel_app/view/login.dart';
+import 'package:travel_app/view/signup.dart';
 
 import '../utils/font.dart';
 
@@ -59,9 +61,10 @@ class _LanguageDropdownState extends State<LanguageDropdown> {
   String _selectedValue = 'English';
   @override
   Widget build(BuildContext context) {
-    return FittedBox(fit: BoxFit.scaleDown,
+    return FittedBox(
+      fit: BoxFit.scaleDown,
       child: DropdownButton(
-        iconEnabledColor: Colors.white,
+          iconEnabledColor: Colors.white,
           underline: const SizedBox(),
           isExpanded: false,
           value: _selectedValue,
@@ -91,7 +94,7 @@ class _MyAccountDropdownState extends State<MyAccountDropdown> {
   @override
   Widget build(BuildContext context) {
     return DropdownButton(
-      icon: const SizedBox(),
+        icon: const SizedBox(),
         underline: const SizedBox(),
         isExpanded: true,
         value: null,
@@ -99,21 +102,39 @@ class _MyAccountDropdownState extends State<MyAccountDropdown> {
         hint: FittedBox(
           child: SizedBox(
             width: 110,
-            child:  Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Expanded(child: CircleAvatar(child: Icon(Icons.person),)),
-                Container(width: 10,),
-                Text('My Account',style: kBoldWhiteNormal(),),
+                const Expanded(
+                    child: CircleAvatar(
+                  child: Icon(Icons.person),
+                )),
+                Container(
+                  width: 10,
+                ),
+                Text(
+                  'My Account',
+                  style: kBoldWhiteNormal(),
+                ),
               ],
             ),
           ),
         ),
         items: [
           DropdownMenuItem(
-              onTap: () {}, value: 'Login', child:  Text('Login',style: kNormal())),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const LogIn()));
+              },
+              value: 'Login',
+              child: Text('Login', style: kNormal())),
           DropdownMenuItem(
-              onTap: () {}, value: 'Sign Up', child:  Text('Sign Up', style: kNormal())),
+              onTap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => SignUp()));
+              },
+              value: 'Sign Up',
+              child: Text('Sign Up', style: kNormal())),
         ],
         onChanged: (value) {});
   }
