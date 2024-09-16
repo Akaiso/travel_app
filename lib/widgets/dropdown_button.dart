@@ -130,8 +130,8 @@ class _MyAccountDropdownState extends State<MyAccountDropdown> {
               child: Text('Login', style: kNormal())),
           DropdownMenuItem(
               onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => SignUp()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const SignUp()));
               },
               value: 'Sign Up',
               child: Text('Sign Up', style: kNormal())),

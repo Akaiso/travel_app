@@ -3,7 +3,6 @@ import 'package:travel_app/controller/authentication.dart';
 import 'package:travel_app/utils/colors.dart';
 import 'package:travel_app/view/home_page.dart';
 import 'package:travel_app/view/signup.dart';
-
 import 'forgot_password.dart';
 
 class LogIn extends StatefulWidget {
@@ -17,7 +16,6 @@ class _LogInState extends State<LogIn> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  final _confirmPasswordController = TextEditingController();
   final Auth auth = Auth();
 
   @override

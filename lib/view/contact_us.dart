@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/utils/colors.dart';
 import 'package:travel_app/utils/font.dart';
@@ -38,10 +37,13 @@ class _ContactUsState extends State<ContactUs> {
 
   @override
   Widget build(BuildContext context) {
-    return  SafeArea(
+    return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title:  Text("Contact Us", style: kBoldNormal(),),
+          title: Text(
+            "Contact Us",
+            style: kBoldNormal(),
+          ),
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -67,15 +69,19 @@ class _ContactUsState extends State<ContactUs> {
                 child: Container(
                   color: Colors.white,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10.0, vertical: 10),
                     child: Form(
                       key: _formKey,
                       child: Column(
                         children: [
-                          Container(
+                          SizedBox(
                             width: 200,
                             height: 150,
-                            child: Image.asset("assets/images/logo.png",fit: BoxFit.fitWidth,),
+                            child: Image.asset(
+                              "assets/images/logo.png",
+                              fit: BoxFit.fitWidth,
+                            ),
                           ),
                           TextFormField(
                             controller: _nameController,
@@ -104,7 +110,8 @@ class _ContactUsState extends State<ContactUs> {
                               if (value == null || value.isEmpty) {
                                 return "Please enter your email";
                               }
-                              if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                              if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
+                                  .hasMatch(value)) {
                                 return 'Please enter a valid email address';
                               }
                               return null;
