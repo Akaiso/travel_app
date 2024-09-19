@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:travel_app/utils/font.dart';
+import 'package:travel_app/view/login.dart';
 
 import '../controller/authentication.dart';
+import '../utils/colors.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -22,6 +27,7 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+          appBar: AppBar(title: Text("Sign Up", style: kBoldNormal(),),),
       body: Column(
         children: [
           const SizedBox(
@@ -31,7 +37,7 @@ class _SignUpState extends State<SignUp> {
               color: Colors.white,
               child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
+                    const EdgeInsets.all(20),
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -133,6 +139,11 @@ class _SignUpState extends State<SignUp> {
                         height: 30,
                       ),
                       ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(kOrange()),
+                            foregroundColor:
+                            MaterialStateProperty.all(Colors.white),
+                          ),
                           onPressed: () {
                             _formKey.currentState!.validate();
                             if (context.mounted) {
@@ -151,7 +162,12 @@ class _SignUpState extends State<SignUp> {
                                 _passwordController.text.trim(),
                                 _phoneController.text.trim());
                           },
-                          child: const Text(" Sign up"))
+                          child: const Text(" Sign up")),
+                      const SizedBox(height: 10,),
+                      TextButton(onPressed: (){
+                        //Get.to(()=> const LogIn());
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const LogIn()));
+                      }, child: const Text("Already have an account? login"))
                     ],
                   ),
                 ),

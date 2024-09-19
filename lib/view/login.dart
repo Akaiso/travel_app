@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/controller/authentication.dart';
 import 'package:travel_app/utils/colors.dart';
+import 'package:travel_app/utils/font.dart';
 import 'package:travel_app/view/home_page.dart';
 import 'package:travel_app/view/signup.dart';
 import 'forgot_password.dart';
@@ -22,6 +23,7 @@ class _LogInState extends State<LogIn> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(title:  Text("Log In", style: kBoldNormal(),),),
           body: Column(
         children: [
           const SizedBox(
@@ -30,12 +32,12 @@ class _LogInState extends State<LogIn> {
           Container(
             color: Colors.white,
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(20.0),
               child: Form(
                 key: formKey,
                 child: Column(
                   children: [
-                    const Text("Log In"),
+
                     const SizedBox(
                       height: 30,
                     ),

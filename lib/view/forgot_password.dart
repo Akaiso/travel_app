@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/controller/authentication.dart';
+import 'package:travel_app/utils/colors.dart';
 import 'package:travel_app/utils/font.dart';
 
 class ForgotPassword extends StatefulWidget {
@@ -30,50 +31,55 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 ),
                 Container(
                   color: Colors.white,
-                  child: Column(
-                    children: [
-                      TextFormField(
-                        controller: _emailController,
-                        decoration: const InputDecoration(
-                          labelText: "Email",
-                          border: OutlineInputBorder(),
-                        ),
-                        keyboardType: TextInputType.emailAddress,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "Please enter your email";
-                          }
-                          if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-                            return 'Please enter a valid email address';
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      ElevatedButton(
-                          onPressed: () async {
-                            try {
-                              await _auth
-                                  .forgotpassword(_emailController.text.trim());
-                              if (context.mounted) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                        content:
-                                            Text("Password reset email sent")));
-                              }
-                            } catch (e) {
-                              if (context.mounted) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                        content: Text(
-                                            "Password reset email failed")));
-                              }
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          controller: _emailController,
+                          decoration: const InputDecoration(
+                            labelText: "Email",
+                            border: OutlineInputBorder(),
+                          ),
+                          keyboardType: TextInputType.emailAddress,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "Please enter your email";
                             }
+                            if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                              return 'Please enter a valid email address';
+                            }
+                            return null;
                           },
-                          child: const Text("send reset email"))
-                    ],
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        ElevatedButton(
+                          style: ButtonStyle(backgroundColor: MaterialStateProperty.all(kOrange()),
+                          foregroundColor: MaterialStateProperty.all(Colors.white)),
+                            onPressed: () async {
+                              try {
+                                await _auth
+                                    .forgotpassword(_emailController.text.trim());
+                                if (context.mounted) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                          content:
+                                              Text("Password reset email sent")));
+                                }
+                              } catch (e) {
+                                if (context.mounted) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                          content: Text(
+                                              "Password reset email failed")));
+                                }
+                              }
+                            },
+                            child: const Text("send reset email"))
+                      ],
+                    ),
                   ),
                 )
               ],

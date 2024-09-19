@@ -65,6 +65,7 @@ class _DrawerClassState extends State<DrawerClass> {
                     children: [
                       ListTile(
                           onTap: (){
+                            Navigator.pop(context);
                             if(index == 5 ){
                               toWhatsApp(context);
                             }else if(index == 4 ){

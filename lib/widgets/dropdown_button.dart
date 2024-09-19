@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:travel_app/utils/colors.dart';
+import 'package:travel_app/view/home_page.dart';
 import 'package:travel_app/view/login.dart';
 import 'package:travel_app/view/signup.dart';
 
@@ -70,9 +73,9 @@ class _LanguageDropdownState extends State<LanguageDropdown> {
           value: _selectedValue,
           style: kBoldWhiteNormal(),
           dropdownColor: kBlue(),
-          items: const [
-            DropdownMenuItem(value: 'English', child: Text('English')),
-            DropdownMenuItem(value: 'French', child: Text('French')),
+          items:  [
+            DropdownMenuItem(value: 'English', child: Text('English',style: kBoldNormal())),
+            DropdownMenuItem(value: 'French', child: Text('French', style: kBoldNormal())),
           ],
           onChanged: (value) {
             setState(() {
@@ -91,6 +94,7 @@ class MyAccountDropdown extends StatefulWidget {
 }
 
 class _MyAccountDropdownState extends State<MyAccountDropdown> {
+  String? selectedValue;
   @override
   Widget build(BuildContext context) {
     return DropdownButton(
@@ -98,7 +102,6 @@ class _MyAccountDropdownState extends State<MyAccountDropdown> {
         underline: const SizedBox(),
         isExpanded: true,
         value: null,
-        style: kNormal(),
         hint: FittedBox(
           child: SizedBox(
             width: 110,
@@ -122,20 +125,24 @@ class _MyAccountDropdownState extends State<MyAccountDropdown> {
         ),
         items: [
           DropdownMenuItem(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const LogIn()));
-              },
-              value: 'Login',
-              child: Text('Login', style: kNormal())),
+              value: 'Login', child: Text('Login', style: kBoldNormal())),
           DropdownMenuItem(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const SignUp()));
-              },
-              value: 'Sign Up',
-              child: Text('Sign Up', style: kNormal())),
+              value: 'Sign Up', child: Text('Sign Up', style: kBoldNormal())),
         ],
-        onChanged: (value) {});
+        onChanged: (value) {
+          selectedValue = value;
+          if (value != null) {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              switch (value) {
+                case "Login":
+                  return const LogIn();
+                case "Sign Up":
+                  return const SignUp();
+                default:
+                  return const HomePage();
+              }
+            }));
+          }
+        });
   }
 }

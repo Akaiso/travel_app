@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:travel_app/utils/font.dart';
 import 'package:travel_app/widgets/card_with_double_rows.dart';
 import 'package:travel_app/widgets/card_with_single_row.dart';
@@ -15,6 +17,7 @@ import '../widgets/carousel.dart';
 import '../widgets/modal.dart';
 import '../widgets/service_tabs.dart';
 import '../widgets/suggestion_info.dart';
+import 'login.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

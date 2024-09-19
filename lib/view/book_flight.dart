@@ -15,7 +15,7 @@ class _BookFlightState extends State<BookFlight> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        title:  Text("Book your flight", style: kBoldNormal()),
+        title:  Text("Flight", style: kBoldNormal()),
       ),
       body: const SingleChildScrollView(
         child: Column(

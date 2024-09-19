@@ -13,7 +13,7 @@ class _BookRideState extends State<BookRide> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
-      appBar: AppBar(title:  Text("Book a ride", style: kBoldNormal()),),
+      appBar: AppBar(title:  Text("Pick-up / Drop-off", style: kBoldNormal()),),
     ));
   }
 }

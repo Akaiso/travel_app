@@ -40,6 +40,8 @@
   <script src="flutter.js" defer></script>
 </head>
 <body>
+<p>Hello world!</p>
+<p>I added this to the index.html file in the "body" tag</p>
   <script>
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
@@ -54,6 +56,25 @@
         }
       });
     });
+  </script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDCYnER2IhRrcINXANnBCzLmOXOtiAwBnA",
+      authDomain: "travelapp-4897c.firebaseapp.com",
+      projectId: "travelapp-4897c",
+      storageBucket: "travelapp-4897c.appspot.com",
+      messagingSenderId: "882878996130",
+      appId: "1:882878996130:web:ed76b6342762322bb101fb"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
   </script>
 </body>
 </html>

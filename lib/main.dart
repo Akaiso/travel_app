@@ -1,12 +1,23 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:travel_app/utils/colors.dart';
 import 'package:travel_app/view/home_page.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await dotenv.load(fileName: ".env");
+  // dynamic de = dotenv.env['API_KEY'];
+  // debugPrint (';;;;;;;;;;;;;;;;;;;;;;;///////////////$de');
+  await Firebase.initializeApp(
+      options: FirebaseOptions(
+        //WHICH EVER FORMAT IS FINE:
+          apiKey: dotenv.get("API_KEY"), //"${dotenv..env["API_KEY"]}",
+          appId:   dotenv.get("APP_ID"),  //"${dotenv.env["APP_ID"]}",
+          messagingSenderId:  dotenv.get("MESSAGING_SENDER_ID"),   //"${dotenv.env["MESSAGING_SENDER_ID"]}",
+          projectId:   dotenv.get("PROJECT_ID"), //"${dotenv.env["PROJECT_ID"]}"
+   ));
   runApp(const MyApp());
 }
 
