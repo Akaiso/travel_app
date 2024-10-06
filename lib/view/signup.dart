@@ -27,7 +27,12 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          appBar: AppBar(title: Text("Sign Up", style: kBoldNormal(),),),
+      appBar: AppBar(
+        title: Text(
+          "Sign Up",
+          style: kBoldNormal(),
+        ),
+      ),
       body: Column(
         children: [
           const SizedBox(
@@ -36,8 +41,7 @@ class _SignUpState extends State<SignUp> {
           Container(
               color: Colors.white,
               child: Padding(
-                padding:
-                    const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -119,8 +123,8 @@ class _SignUpState extends State<SignUp> {
                         height: 20,
                       ),
                       TextFormField(
+                        keyboardType: TextInputType.phone,
                         controller: _phoneController,
-                        obscureText: true,
                         decoration: const InputDecoration(
                           labelText: "phone number",
                           border: OutlineInputBorder(),
@@ -140,18 +144,26 @@ class _SignUpState extends State<SignUp> {
                       ),
                       ElevatedButton(
                           style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(kOrange()),
+                            backgroundColor:
+                                MaterialStateProperty.all(kOrange()),
                             foregroundColor:
-                            MaterialStateProperty.all(Colors.white),
+                                MaterialStateProperty.all(Colors.white),
                           ),
                           onPressed: () {
                             _formKey.currentState!.validate();
                             if (context.mounted) {
+
                               ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
                                       content: Text("Sign up successful")));
                             }
-                            try {} catch (e) {
+                            try {
+                               auth.signup(
+                                  _emailController.text.trim(),
+                                  _passwordController.text.trim(),
+                                  _passwordController.text.trim(),
+                                  _phoneController.text.trim());
+                            } catch (e) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
                                       content: Text("Signup failed")));
@@ -163,11 +175,18 @@ class _SignUpState extends State<SignUp> {
                                 _phoneController.text.trim());
                           },
                           child: const Text(" Sign up")),
-                      const SizedBox(height: 10,),
-                      TextButton(onPressed: (){
-                        //Get.to(()=> const LogIn());
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const LogIn()));
-                      }, child: const Text("Already have an account? login"))
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      TextButton(
+                          onPressed: () {
+                            //Get.to(()=> const LogIn());
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const LogIn()));
+                          },
+                          child: const Text("Already have an account? login"))
                     ],
                   ),
                 ),

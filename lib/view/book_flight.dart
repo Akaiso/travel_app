@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:travel_app/model/provider.dart';
 
 import '../utils/font.dart';
 
@@ -17,9 +19,12 @@ class _BookFlightState extends State<BookFlight> {
       appBar: AppBar(
         title:  Text("Flight", style: kBoldNormal()),
       ),
-      body: const SingleChildScrollView(
+      body:  SingleChildScrollView(
         child: Column(
-          children: [],
+          children: [
+            Center(child: Text("${context.watch<ChatListProvider>().chat}")),
+            Text("${context.watch<CounterProvider>().counter}")
+          ],
         ),
       ),
     ));

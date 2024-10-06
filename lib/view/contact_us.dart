@@ -146,7 +146,7 @@ class _ContactUsState extends State<ContactUs> {
                                 foregroundColor:
                                     MaterialStateProperty.all(Colors.white),
                                 backgroundColor:
-                                    MaterialStateProperty.all(kGreenFooter())),
+                                    MaterialStateProperty.all(kOrange())),
                             child: const Text("Send Message"),
                           ),
                           const SizedBox(
