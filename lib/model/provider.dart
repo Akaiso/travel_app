@@ -4,8 +4,9 @@ class ChatListProvider extends ChangeNotifier {
   List chat = [] ;
 
 
+
   void updateChatList(String newChat)  {
-    chat.add(newChat);
+    chat.insert(0,newChat);
     notifyListeners();
   }
 }

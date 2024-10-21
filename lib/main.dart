@@ -10,8 +10,6 @@ import 'package:travel_app/view/home_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
-  // dynamic de = dotenv.env['API_KEY'];
-  // debugPrint (';;;;;;;;;;;;;;;;;;;;;;;///////////////$de');
   await Firebase.initializeApp(
       options: FirebaseOptions(
         //WHICH EVER FORMAT IS FINE:
@@ -41,7 +39,7 @@ class MyApp extends StatelessWidget {
         title: 'Trips Guard',
         theme: ThemeData(
           scaffoldBackgroundColor: kScaffoldBg(),
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
           useMaterial3: true,
         ),
         home: const HomePage(),

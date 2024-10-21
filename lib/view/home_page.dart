@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:travel_app/service/dio_client.dart';
 import 'package:travel_app/utils/font.dart';
 import 'package:travel_app/widgets/card_with_double_rows.dart';
 import 'package:travel_app/widgets/card_with_single_row.dart';
@@ -344,6 +345,7 @@ class _HomePageState extends State<HomePage>
                                       runSpacing: 4,
                                       children: [
                                         offeredServicesTabsNavigator(() {
+                                          DioClient().availableFlightOffers("DXB", "LON", "2024-10-24", 1, false);
                                           showDialog(
                                               context: this.context,
                                               builder: (context) =>
