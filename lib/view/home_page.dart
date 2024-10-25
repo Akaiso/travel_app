@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:travel_app/service/dio_client.dart';
 import 'package:travel_app/utils/font.dart';
+import 'package:travel_app/view/book_flight.dart';
 import 'package:travel_app/widgets/card_with_double_rows.dart';
 import 'package:travel_app/widgets/card_with_single_row.dart';
 import 'package:travel_app/widgets/card_with_two_sections.dart';
@@ -345,11 +346,9 @@ class _HomePageState extends State<HomePage>
                                       runSpacing: 4,
                                       children: [
                                         offeredServicesTabsNavigator(() {
-                                          DioClient().availableFlightOffers("DXB", "LON", "2024-10-24", 1, false);
-                                          showDialog(
-                                              context: this.context,
-                                              builder: (context) =>
-                                              const CustomModal());
+                                          Get.to(()=> const BookFlight());
+                                         // DioClient().availableFlightOffers(origin: "DXB", destination: "LON", departureDate: "2024-10-24", numberOfAdult: 1, nonStop: false);
+
                                         },
                                             " Flight ",
                                             'assets/images/flight.png',
@@ -594,9 +593,12 @@ class _HomePageState extends State<HomePage>
                           580, //MediaQuery.of(context).size.width < 1000 ? 555 : 590,
                       left: MediaQuery.of(context).size.width * 0.40,
                       right: MediaQuery.of(context).size.width * 0.40,
-                      child: const SizedBox(
+                      child:  SizedBox(
                         height: 50,
                         child: HoverEffectButton(
+                          onTap: (){
+                            Get.to(()=> const BookFlight());
+                          },
                           fontWeight: FontWeight.w700,
                           fontSize: 25,
                           text: 'Search',

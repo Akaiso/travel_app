@@ -30,18 +30,30 @@ class DioClient {
   }
 
   Future availableFlightOffers(
-      String origin,
-      String destination,
-      String departureDate,
-      int numberOfAdult,
-      bool? nonStop) async {
+      {required String origin,
+      required String destination,
+      required String departureDate,
+      required int numberOfAdult,
+      bool? nonStop,
+      String? returnDate,
+      int? numberOfChildren,
+      int? numberOfInfants,
+      String? travelClass,
+      String? currency,
+      int? maxPrice}) async {
     await getAuthorization();
-     dio.options.headers =  {"Content-Type": "application/x-www-form-urlencoded", "Authorization": "Bearer $accessToken"};
+    dio.options.headers = {
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Bearer $accessToken"
+    };
     dynamic searchList;
     try {
       Response response = await dio.get(
-        "https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=$origin&destinationLocationCode=$destination&departureDate=$departureDate&adults=$numberOfAdult&nonStop=$nonStop&max=250",
-      );
+          "https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=$origin&destinationLocationCode=$destination&departureDate=$departureDate&returnDate=$returnDate&adults=$numberOfAdult&children=$numberOfChildren&infants=$numberOfInfants&travelClass=$travelClass&nonStop=$nonStop&currencyCode=$currency&maxPrice=$maxPrice&max=250");
+      ///ANOTHER API WITH INCOMPLETE PARAMATER
+      // Response response = await dio.get(
+      //   "https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=$origin&destinationLocationCode=$destination&departureDate=$departureDate&adults=$numberOfAdult&nonStop=$nonStop&max=250",
+      // );
       searchList = response.data["data"];
     } on DioException catch (e) {
       debugPrint("available flight error: $e");

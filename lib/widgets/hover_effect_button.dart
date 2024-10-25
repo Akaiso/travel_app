@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:travel_app/utils/colors.dart';
 
 class HoverEffectButton extends StatefulWidget {
   const HoverEffectButton(
       {super.key,
+      this.onTap,
       required this.fontWeight,
       required this.fontSize,
       required this.text});
+  final dynamic onTap;
   final FontWeight fontWeight;
   final double fontSize;
   final String text;
@@ -27,7 +30,7 @@ class _HoverEffectButtonState extends State<HoverEffectButton> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: widget.onTap,
       child: MouseRegion(
         onHover: (_) {
           setState(() {
