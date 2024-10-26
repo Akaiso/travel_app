@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travel_app/model/provider.dart';
@@ -13,6 +14,7 @@ class BookFlight extends StatefulWidget {
 }
 
 class _BookFlightState extends State<BookFlight> {
+  ///LIST OF AIRPORT IATA CODE
   List airports = [
     "ATL",
     "LAX",
@@ -60,19 +62,48 @@ class _BookFlightState extends State<BookFlight> {
     "MXP",
     "BRU",
   ];
+
+  String? onChangeValue;
   List searchedList = [];
   String inputSearch = "";
   List searchResult = [];
+  String tripType = "ONE WAY";
   String origin = "DUBAI";
   String destination = "NEW YORK CITY";
   String departureDate = "24-10-12";
   String returnDate = "";
-  int numberOfAdult = 1;
-  int numberOfInfants = 0;
-  int numberOfChildren = 0;
+  String numberOfAdult = '1';
+  String numberOfInfants = '0';
+  String numberOfChildren = '0';
   String currency = "USD";
   String travelClass = "ECONOMY";
 
+  List flightOptionList = [
+    "DUBAI",
+    "NEW YORK CITY",
+    "24-10-12",
+    "",
+    '1',
+    '0',
+    '0',
+    "USD",
+    "ECONOMY"
+  ];
+  List flightOptionListSubtitle = [
+    "origin",
+    "destination",
+    "departureDate",
+    "returnDate",
+    "numberOfAdult",
+    "numberOfInfants",
+    "numberOfChildren",
+    "currency",
+    "travelClass"
+  ];
+  TextEditingController originSearchController = TextEditingController();
+  TextEditingController destinationSearchController = TextEditingController();
+
+  ///UNUSED SHOWMODALBOTTOMSHEET BECAUSE THIS ITERATES AND NOT SUITABLE YET
   // void showBottomSheet() {
   //   showModalBottomSheet(
   //       // isScrollControlled: true,
@@ -121,7 +152,46 @@ class _BookFlightState extends State<BookFlight> {
   //           }));
   // }
 
-  void showBottomSheet(BuildContext context) {
+  ///BOOKFLIGHTOPTIONS .  CREATES THE LIST OF OPTIONS TO SELECT FOR YOUR FLIGHT BOOKING
+  Widget bookFlightOptions() {
+    return ListView.builder(
+        shrinkWrap: true,
+        itemCount: flightOptionList.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: ListTile(
+              onTap: () {
+                setState(() {
+                  onChangeValue = flightOptionList[index];
+                  debugPrint("this is the onChangeValue: $onChangeValue");
+                });
+
+                if (index == 2 || index == 3) {
+                  context
+                      .read<ChangeOriginProvider>()
+                      .changeOrigin(flightOptionList[index]);
+                  //  showCalender();
+                } // else //if(index == ){}
+                //showBottomSheet();
+              },
+              title: Text(
+                context
+                    .watch<ChangeOriginProvider>()
+                    .origin, // flightOptionList[index],
+                style: const TextStyle(color: Colors.white),
+              ),
+              subtitle: Text(
+                flightOptionListSubtitle[index],
+                style: const TextStyle(color: Colors.white),
+              ),
+              tileColor: Colors.teal,
+            ),
+          );
+        });
+  }
+
+  void showBottomSheet(TextEditingController controller) {
     showModalBottomSheet(
       context: context,
       builder: (context) {
@@ -135,7 +205,7 @@ class _BookFlightState extends State<BookFlight> {
                     height: 20,
                   ),
                   TextFormField(
-                      // controller: airportSearchController,
+                      controller: controller,
                       decoration: const InputDecoration(
                         labelText: "Search",
                         icon: Icon(Icons.search),
@@ -144,29 +214,28 @@ class _BookFlightState extends State<BookFlight> {
                         setModalState(() {
                           searchAirports(value);
                         });
-
-                        debugPrint(
-                            "This is the second searchedList: $searchedList");
                       }),
                   const SizedBox(
                     height: 20,
                   ),
                   Expanded(
-                    child:
-                        //Text("${airports.map((e) => e)}"), //airports.map((e) => Text(e)).toList();
-                        ListView.builder(
+                    child: ListView.builder(
                       itemCount: searchedList.length,
-                      // itemCount: airports.length,
                       itemBuilder: (cont, index) {
                         return InkWell(
                             onTap: () {
                               setState(() {});
-                              //Get.to(()=> const HomePage());
+                              setModalState(() {
+                                controller.text = searchedList[index];
+                                context
+                                    .read<ChangeOriginProvider>()
+                                    .changeOrigin(originSearchController.text);
+                              });
+                              Navigator.pop(
+                                context,
+                              );
                             },
                             child: Text("${searchedList[index]}"));
-                        // return Text("${searchedList[index]}");
-                        // return Text(searchedList[index]);
-                        // return ;
                       },
                     ),
                   ),
@@ -179,25 +248,21 @@ class _BookFlightState extends State<BookFlight> {
     );
   }
 
-  TextEditingController? airportSearchController = TextEditingController();
-
   List searchAirports(String input) {
     inputSearch = input;
     searchedList = airports
         .where((airport) =>
             airport.toUpperCase().contains(inputSearch.toUpperCase()))
         .toList();
-    debugPrint("This is the searchResult: $searchResult");
-    debugPrint("This is the searchedList: $searchedList");
     return searchedList;
   }
-
-  String tripType = "ONE WAY";
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    originSearchController.text = "DUBAI";
+    destinationSearchController.text = "NEW YORK CITY";
   }
 
   @override
@@ -216,18 +281,6 @@ class _BookFlightState extends State<BookFlight> {
               Center(child: Text("${context.watch<ChatListProvider>().chat}")),
               Text("${context.watch<CounterProvider>().counter}"),
 
-              // DropdownButton(
-              //     value: Container(
-              //       child: ListTile(
-              //         title: Text("DROPDOWN BUTTON"),
-              //       ),
-              //     ),
-              //     items: const [
-              //       DropdownMenuItem(child: Text("ONE WAY")),
-              //       DropdownMenuItem(child: Text("ROUND TRIP")),
-              //       DropdownMenuItem(child: Text("MULTI CITY")),
-              //     ],
-              //     onChanged: (value) {}),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 18),
                 color: Colors.teal,
@@ -293,13 +346,17 @@ class _BookFlightState extends State<BookFlight> {
               const SizedBox(
                 height: 10,
               ),
+              // bookFlightOptions()
+
+              ///ORIGIN LIST TILE
               ListTile(
                 onTap: () {
                   debugPrint("$searchedList");
-                  showBottomSheet(context);
+                  showBottomSheet(originSearchController);
                 },
                 title: Text(
-                  origin,
+                  originSearchController.text,
+                  // context.watch<ChangeOriginProvider>().origin,
                   style: const TextStyle(color: Colors.white),
                 ),
                 subtitle: const Text(
@@ -311,9 +368,15 @@ class _BookFlightState extends State<BookFlight> {
               const SizedBox(
                 height: 10,
               ),
+
+              ///DESTINATION LIST TILE
               ListTile(
+                onTap: () {
+                  debugPrint("$searchedList");
+                  showBottomSheet(destinationSearchController);
+                },
                 title: Text(
-                  destination,
+                  destinationSearchController.text,
                   style: const TextStyle(color: Colors.white),
                 ),
                 subtitle: const Text(
@@ -325,10 +388,14 @@ class _BookFlightState extends State<BookFlight> {
               const SizedBox(
                 height: 10,
               ),
+
+              ///DEPARTURE DATE TILE
               ListTile(
+                onTap: (){showDatePicker(
+                    context: context, firstDate: DateTime.now(), lastDate: DateTime.now());},
                 title: Text(
                   departureDate,
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                 ),
                 subtitle: const Text(
                   "departure date",
@@ -339,6 +406,8 @@ class _BookFlightState extends State<BookFlight> {
               const SizedBox(
                 height: 10,
               ),
+
+              ///RETURN DATE TILE
               ListTile(
                 title: Text(
                   returnDate,
@@ -353,6 +422,8 @@ class _BookFlightState extends State<BookFlight> {
               const SizedBox(
                 height: 10,
               ),
+
+              ///NUMBER OF ADULT TILE
               ListTile(
                 title: Text(
                   "$numberOfAdult",
@@ -367,6 +438,8 @@ class _BookFlightState extends State<BookFlight> {
               const SizedBox(
                 height: 10,
               ),
+
+              ///NUMBER OF INFANTS TILE
               ListTile(
                 title: Text(
                   "$numberOfInfants",
@@ -381,9 +454,11 @@ class _BookFlightState extends State<BookFlight> {
               const SizedBox(
                 height: 10,
               ),
+
+              ///NUMBER OF CHILDREN TILE
               ListTile(
                 title: Text(
-                  "$numberOfChildren",
+                  numberOfChildren,
                   style: const TextStyle(color: Colors.white),
                 ),
                 subtitle: const Text(
@@ -395,12 +470,14 @@ class _BookFlightState extends State<BookFlight> {
               const SizedBox(
                 height: 10,
               ),
+
+              ///CURRENCY TILE
               ListTile(
                 title: Text(
                   currency,
                   style: TextStyle(color: Colors.white),
                 ),
-                subtitle: Text(
+                subtitle: const Text(
                   "Currency",
                   style: TextStyle(color: Colors.white),
                 ),
@@ -409,20 +486,26 @@ class _BookFlightState extends State<BookFlight> {
               const SizedBox(
                 height: 10,
               ),
+
+              ///TRAVEL CLASS TILE
               ListTile(
                 title: Text(
                   travelClass,
                   style: TextStyle(color: Colors.white),
                 ),
-                subtitle: Text(
+                subtitle: const Text(
                   "Travel class",
                   style: TextStyle(color: Colors.white),
                 ),
                 tileColor: Colors.teal,
               ),
+
               const SizedBox(
                 height: 10,
               ),
+
+
+              ///SEARCH BUTTON
               InkWell(
                 onTap: () {},
                 child: Container(

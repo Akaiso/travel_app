@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FlightBottomSheet extends StatefulWidget {
@@ -11,7 +10,7 @@ class FlightBottomSheet extends StatefulWidget {
 class _FlightBottomSheetState extends State<FlightBottomSheet> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
 
     );
   }

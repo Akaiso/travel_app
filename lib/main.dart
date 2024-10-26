@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
         ),
          ChangeNotifierProvider(create: (context)=> CounterProvider() ,
          ),
+        ChangeNotifierProvider(create: (context)=> ChangeOriginProvider()),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
