@@ -40,8 +40,8 @@
   <script src="flutter.js" defer></script>
 </head>
 <body>
-<p>Hello world!</p>
-<p>I added this to the index.html file in the "body" tag</p>
+<!--<p>Hello world!</p>-->
+<!--<p>I added this to the index.html file in the "body" tag</p>-->
   <script>
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
@@ -65,7 +65,7 @@
 
     // Your web app's Firebase configuration
     const firebaseConfig = {
-      apiKey: "AIzaSyDCYnER2IhRrcINXANnBCzLmOXOtiAwBnA",
+      apiKey: dotenv.get("API_KEY"),
       authDomain: "travelapp-4897c.firebaseapp.com",
       projectId: "travelapp-4897c",
       storageBucket: "travelapp-4897c.appspot.com",

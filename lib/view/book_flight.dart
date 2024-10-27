@@ -1,7 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:intl/intl.dart';
 import 'package:travel_app/model/provider.dart';
+import 'package:travel_app/service/dio_client.dart';
 import 'package:travel_app/utils/colors.dart';
 
 import '../utils/font.dart';
@@ -61,6 +64,7 @@ class _BookFlightState extends State<BookFlight> {
     "LIS",
     "MXP",
     "BRU",
+    "NYC"
   ];
 
   String? onChangeValue;
@@ -70,13 +74,32 @@ class _BookFlightState extends State<BookFlight> {
   String tripType = "ONE WAY";
   String origin = "DUBAI";
   String destination = "NEW YORK CITY";
-  String departureDate = "24-10-12";
-  String returnDate = "";
-  String numberOfAdult = '1';
+  String numberOfAdult = "1";
   String numberOfInfants = '0';
   String numberOfChildren = '0';
   String currency = "USD";
   String travelClass = "ECONOMY";
+
+  String selectedDepartureDate = ''; //DateTime.now().toString().split(' ')[0];
+  String selectedReturnDate = ' ';
+  DateFormat? dateFormat;
+
+  ///DATE SELECTION FUNCTION
+  Future<String> selectDepartureDate() async {
+    DateTime? pickedDepartureDate = await showDatePicker(
+        context: context, firstDate: DateTime(2000), lastDate: DateTime(2100));
+    selectedDepartureDate = pickedDepartureDate!.toString().split(' ')[0];
+    setState(() {});
+    return selectedDepartureDate;
+  }
+
+  Future<String> selectReturnDate() async {
+    DateTime? pickedReturnDate = await showDatePicker(
+        context: context, firstDate: DateTime(2000), lastDate: DateTime(2100));
+    selectedReturnDate = pickedReturnDate!.toString().split(' ')[0];
+    setState(() {});
+    return selectedReturnDate;
+  }
 
   List flightOptionList = [
     "DUBAI",
@@ -152,7 +175,7 @@ class _BookFlightState extends State<BookFlight> {
   //           }));
   // }
 
-  ///BOOKFLIGHTOPTIONS .  CREATES THE LIST OF OPTIONS TO SELECT FOR YOUR FLIGHT BOOKING
+  ///BOOKFLIGHTOPTIONS .  AUTOBUILDS THE LIST OF OPTIONS TO SELECT FOR YOUR FLIGHT BOOKING
   Widget bookFlightOptions() {
     return ListView.builder(
         shrinkWrap: true,
@@ -191,6 +214,7 @@ class _BookFlightState extends State<BookFlight> {
         });
   }
 
+  ///FUNCTION TO SHOW BOTTOM SHEET . TAKES IN A PARAMETER: TextEditingController for each option used in Origin and Destination
   void showBottomSheet(TextEditingController controller) {
     showModalBottomSheet(
       context: context,
@@ -248,6 +272,7 @@ class _BookFlightState extends State<BookFlight> {
     );
   }
 
+  ///BOTTOMSHEET SEARCH FUNCTION
   List searchAirports(String input) {
     inputSearch = input;
     searchedList = airports
@@ -280,6 +305,11 @@ class _BookFlightState extends State<BookFlight> {
             children: [
               Center(child: Text("${context.watch<ChatListProvider>().chat}")),
               Text("${context.watch<CounterProvider>().counter}"),
+              const Text("Asterisk (*) indicate compulsory options",
+                  style: TextStyle(color: Colors.white)),
+              const SizedBox(
+                height: 20,
+              ),
 
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 18),
@@ -301,7 +331,7 @@ class _BookFlightState extends State<BookFlight> {
                     inputDecorationTheme:
                         const InputDecorationTheme(border: InputBorder.none),
                     label: const Text(
-                      "Trip type",
+                      "Trip type  *",
                       style: TextStyle(color: Colors.white),
                     ),
                     trailingIcon: const Icon(
@@ -351,16 +381,16 @@ class _BookFlightState extends State<BookFlight> {
               ///ORIGIN LIST TILE
               ListTile(
                 onTap: () {
-                  debugPrint("$searchedList");
                   showBottomSheet(originSearchController);
+                  originSearchController.clear();
+                  searchedList = [];
                 },
                 title: Text(
                   originSearchController.text,
-                  // context.watch<ChangeOriginProvider>().origin,
                   style: const TextStyle(color: Colors.white),
                 ),
                 subtitle: const Text(
-                  "origin",
+                  "origin  *",
                   style: TextStyle(color: Colors.white),
                 ),
                 tileColor: Colors.teal,
@@ -372,15 +402,16 @@ class _BookFlightState extends State<BookFlight> {
               ///DESTINATION LIST TILE
               ListTile(
                 onTap: () {
-                  debugPrint("$searchedList");
                   showBottomSheet(destinationSearchController);
+                  destinationSearchController.clear();
+                  searchedList = [];
                 },
                 title: Text(
                   destinationSearchController.text,
                   style: const TextStyle(color: Colors.white),
                 ),
                 subtitle: const Text(
-                  "destination",
+                  "destination  *",
                   style: TextStyle(color: Colors.white),
                 ),
                 tileColor: Colors.teal,
@@ -391,14 +422,15 @@ class _BookFlightState extends State<BookFlight> {
 
               ///DEPARTURE DATE TILE
               ListTile(
-                onTap: (){showDatePicker(
-                    context: context, firstDate: DateTime.now(), lastDate: DateTime.now());},
+                onTap: () {
+                  selectDepartureDate();
+                },
                 title: Text(
-                  departureDate,
+                  selectedDepartureDate,
                   style: const TextStyle(color: Colors.white),
                 ),
                 subtitle: const Text(
-                  "departure date",
+                  "departure date  *",
                   style: TextStyle(color: Colors.white),
                 ),
                 tileColor: Colors.teal,
@@ -409,8 +441,11 @@ class _BookFlightState extends State<BookFlight> {
 
               ///RETURN DATE TILE
               ListTile(
+                onTap: () {
+                  selectReturnDate();
+                },
                 title: Text(
-                  returnDate,
+                  selectedReturnDate,
                   style: const TextStyle(color: Colors.white),
                 ),
                 subtitle: const Text(
@@ -425,12 +460,46 @@ class _BookFlightState extends State<BookFlight> {
 
               ///NUMBER OF ADULT TILE
               ListTile(
+                onTap: () {
+                  showModalBottomSheet(
+                      isScrollControlled: true,
+                      context: context,
+                      builder: (context) {
+                        return SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              const SizedBox(
+                                height: 30,
+                              ),
+                              ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: 9,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 30.0, vertical: 10),
+                                      child: InkWell(
+                                          onTap: () {
+                                            numberOfAdult = (index + 1).toString();
+                                            Navigator.pop(context);
+                                            setState(() {});
+                                          },
+                                          child: SizedBox(
+                                              height: 30,
+                                              child: Text("${index + 1}"))),
+                                    );
+                                  }),
+                            ],
+                          ),
+                        );
+                      });
+                },
                 title: Text(
-                  "$numberOfAdult",
+                  numberOfAdult,
                   style: const TextStyle(color: Colors.white),
                 ),
                 subtitle: const Text(
-                  "Number of Adult",
+                  "Number of Adult  *",
                   style: TextStyle(color: Colors.white),
                 ),
                 tileColor: Colors.teal,
@@ -442,7 +511,7 @@ class _BookFlightState extends State<BookFlight> {
               ///NUMBER OF INFANTS TILE
               ListTile(
                 title: Text(
-                  "$numberOfInfants",
+                  numberOfInfants,
                   style: const TextStyle(color: Colors.white),
                 ),
                 subtitle: const Text(
@@ -475,7 +544,7 @@ class _BookFlightState extends State<BookFlight> {
               ListTile(
                 title: Text(
                   currency,
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                 ),
                 subtitle: const Text(
                   "Currency",
@@ -489,9 +558,12 @@ class _BookFlightState extends State<BookFlight> {
 
               ///TRAVEL CLASS TILE
               ListTile(
+                onTap: (){
+                 // DioClient().availableFlightOffers(origin: "SYD", destination: "BKK", departureDate: "2024-10-29", numberOfAdult: "1");
+                },
                 title: Text(
                   travelClass,
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                 ),
                 subtitle: const Text(
                   "Travel class",
@@ -504,10 +576,31 @@ class _BookFlightState extends State<BookFlight> {
                 height: 10,
               ),
 
-
               ///SEARCH BUTTON
               InkWell(
-                onTap: () {},
+                onTap: () async{
+                  try{
+                    await DioClient().availableFlightOffers(
+                        origin: origin,
+                        destination: destination,
+                        departureDate: selectedDepartureDate,
+                        numberOfAdult: numberOfAdult);
+                  }catch (e){
+                    Get.rawSnackbar(
+                        snackPosition: SnackPosition.TOP,
+                        duration: const Duration(seconds: 5),
+                        icon: const Icon(Icons.error,color: Colors.orange,),
+                        titleText: const Text(
+                          "Error",
+                          style: TextStyle(color: Colors.orange),
+                        ),
+                        title: "Error",
+                        message:
+                        "$e...Something went wrong. Make sure fields marked with asterisks are selected");
+                  }
+                  debugPrint("$origin $destination $selectedDepartureDate $numberOfAdult");
+
+                },
                 child: Container(
                   color: Colors.white,
                   width: double.infinity,

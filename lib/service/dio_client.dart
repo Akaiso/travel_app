@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 
 class DioClient {
   final Dio dio = Dio();
@@ -33,7 +36,7 @@ class DioClient {
       {required String origin,
       required String destination,
       required String departureDate,
-      required int numberOfAdult,
+      required String numberOfAdult,
       bool? nonStop,
       String? returnDate,
       int? numberOfChildren,
@@ -46,7 +49,7 @@ class DioClient {
       "Content-Type": "application/x-www-form-urlencoded",
       "Authorization": "Bearer $accessToken"
     };
-    dynamic searchList;
+    dynamic searchList = [];
     try {
       Response response = await dio.get(
           "https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=$origin&destinationLocationCode=$destination&departureDate=$departureDate&returnDate=$returnDate&adults=$numberOfAdult&children=$numberOfChildren&infants=$numberOfInfants&travelClass=$travelClass&nonStop=$nonStop&currencyCode=$currency&maxPrice=$maxPrice&max=250");
@@ -54,9 +57,20 @@ class DioClient {
       // Response response = await dio.get(
       //   "https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=$origin&destinationLocationCode=$destination&departureDate=$departureDate&adults=$numberOfAdult&nonStop=$nonStop&max=250",
       // );
-      searchList = response.data["data"];
+       searchList = response.data["data"];
     } on DioException catch (e) {
       debugPrint("available flight error: $e");
+      Get.rawSnackbar(
+          snackPosition: SnackPosition.TOP,
+          duration: const Duration(seconds: 5),
+          icon: const Icon(Icons.error,color: Colors.orange,),
+          titleText: const Text(
+            "Error",
+            style: TextStyle(color: Colors.orange),
+          ),
+          title: "Error",
+          message:
+          "$e...Something went wrong. Make sure fields marked with asterisks are selected");
     }
     debugPrint("this is the search list: $searchList");
     // return searchList;
