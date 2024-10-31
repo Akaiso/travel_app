@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
+import 'package:travel_app/model/flight_offer_search.dart';
 import 'package:travel_app/model/provider.dart';
 import 'package:travel_app/service/dio_client.dart';
 import 'package:travel_app/utils/colors.dart';
@@ -79,6 +81,7 @@ class _BookFlightState extends State<BookFlight> {
   String numberOfChildren = '0';
   String currency = "USD";
   String travelClass = "ECONOMY";
+  bool? nonStop ;
 
   String selectedDepartureDate = ''; //DateTime.now().toString().split(' ')[0];
   String selectedReturnDate = ' ';
@@ -288,6 +291,7 @@ class _BookFlightState extends State<BookFlight> {
     super.initState();
     originSearchController.text = "DUBAI";
     destinationSearchController.text = "NEW YORK CITY";
+
   }
 
   @override
@@ -579,27 +583,35 @@ class _BookFlightState extends State<BookFlight> {
               ///SEARCH BUTTON
               InkWell(
                 onTap: () async{
-                  try{
-                    await DioClient().availableFlightOffers(
-                        origin: origin,
-                        destination: destination,
-                        departureDate: selectedDepartureDate,
-                        numberOfAdult: numberOfAdult);
-                  }catch (e){
-                    Get.rawSnackbar(
-                        snackPosition: SnackPosition.TOP,
-                        duration: const Duration(seconds: 5),
-                        icon: const Icon(Icons.error,color: Colors.orange,),
-                        titleText: const Text(
-                          "Error",
-                          style: TextStyle(color: Colors.orange),
-                        ),
-                        title: "Error",
-                        message:
-                        "$e...Something went wrong. Make sure fields marked with asterisks are selected");
-                  }
-                  debugPrint("$origin $destination $selectedDepartureDate $numberOfAdult");
+                  if(numberOfAdult == "1"){nonStop = false;} else {nonStop = true;}
+                  await DioClient().availableFlightOffers(origin:originSearchController.text, nonStop: nonStop! );
+                  debugPrint("The nonstop value is: $nonStop");
+                 // await DioClient().testApi();
+                 //  try{
+                 //    await DioClient().availableFlightOffers(
+                 //        origin: originSearchController.text.trim(),
+                 //        destination: destinationSearchController.text.trim(),
+                 //        departureDate: selectedDepartureDate,
+                 //        numberOfAdult: numberOfAdult
+                 //    );
+                 //    debugPrint("${originSearchController.text.trim()} ${destinationSearchController.text} $selectedDepartureDate $numberOfAdult");
+                 //  }catch (e){
+                 //    Get.rawSnackbar(
+                 //        snackPosition: SnackPosition.BOTTOM,
+                 //        duration: const Duration(seconds: 4),
+                 //        icon: const Icon(Icons.error,color: Colors.orange,),
+                 //        titleText: const Text(
+                 //          "Error",
+                 //          style: TextStyle(color: Colors.orange),
+                 //        ),
+                 //        title: "Error",
+                 //        message:
+                 //        "$e...Something went wrong. Make sure fields marked with asterisks are selected");
+                 //  }
 
+                  dynamic searL = GetStorage().read("searchList");
+                  debugPrint("This is from GetStorage: $searL");
+                  Get.to(()=> const FlightOfferSearchDisplay());
                 },
                 child: Container(
                   color: Colors.white,

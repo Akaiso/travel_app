@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_app/model/provider.dart';
 import 'package:travel_app/utils/colors.dart';
@@ -12,12 +13,15 @@ void main() async {
   await dotenv.load(fileName: ".env");
   await Firebase.initializeApp(
       options: FirebaseOptions(
-        //WHICH EVER FORMAT IS FINE:
-          apiKey: dotenv.get("API_KEY"), //"${dotenv..env["API_KEY"]}",
-          appId:   dotenv.get("APP_ID"),  //"${dotenv.env["APP_ID"]}",
-          messagingSenderId:  dotenv.get("MESSAGING_SENDER_ID"),   //"${dotenv.env["MESSAGING_SENDER_ID"]}",
-          projectId:   dotenv.get("PROJECT_ID"), //"${dotenv.env["PROJECT_ID"]}"
-   ));
+    //WHICH EVER FORMAT IS FINE:
+    apiKey: dotenv.get("API_KEY"), //"${dotenv..env["API_KEY"]}",
+    appId: dotenv.get("APP_ID"), //"${dotenv.env["APP_ID"]}",
+    messagingSenderId: dotenv
+        .get("MESSAGING_SENDER_ID"), //"${dotenv.env["MESSAGING_SENDER_ID"]}",
+    projectId: dotenv.get("PROJECT_ID"), //"${dotenv.env["PROJECT_ID"]}"
+  ));
+  await GetStorage.init();
+
   runApp(const MyApp());
 }
 
@@ -29,11 +33,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context)=>ChatListProvider() ,
-        ),
-         ChangeNotifierProvider(create: (context)=> CounterProvider() ,
-         ),
-        ChangeNotifierProvider(create: (context)=> ChangeOriginProvider()),
+        ChangeNotifierProvider(create: (context) => ChatListProvider()),
+        ChangeNotifierProvider(create: (context) => CounterProvider()),
+        ChangeNotifierProvider(create: (context) => ChangeOriginProvider()),
+        ChangeNotifierProvider(create: (context) => DioSearchListProvider()),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
@@ -44,8 +47,8 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         home: const HomePage(),
-       initialRoute: "/",
-       // routes: {"/": (context)=> const HomePage()},
+        initialRoute: "/",
+        // routes: {"/": (context)=> const HomePage()},
       ),
     );
   }
