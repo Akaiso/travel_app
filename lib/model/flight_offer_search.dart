@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:travel_app/utils/colors.dart';
 
 class FlightOfferSearch {
   DateTime? departure;
@@ -67,50 +68,53 @@ class _FlightOfferSearchDisplayState extends State<FlightOfferSearchDisplay> {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
               child: Container(
-                child: ListTile(
+                child: ListTile(onTap: (){},
+                  tileColor: Colors.white,
                   title: Column(
                     children: [
                       Row(
                         children: [
                           Text(
-                              "Departure: ${search[index]["itineraries"]["segments"][index]["departure"]["iataCode"]}"),
+                              " ${search[index]["itineraries"][0]["segments"][0]["departure"]["iataCode"]}",style: const TextStyle(fontWeight: FontWeight.w700)), //Departure
                           const SizedBox(width: 20),
                           const Text("TO"),
                           const SizedBox(width: 20),
                           Text(
-                              "Arrival: ${search[index]["itineraries"]["segments"][index]["arrival"]["iataCode"]}")
+                              " ${search[index]["itineraries"][0]["segments"][0]["arrival"]["iataCode"]}",style: const TextStyle(fontWeight: FontWeight.w700)) //Arrival
                         ],
                       ),
                       const SizedBox(height: 20),
                       Row(
                         children: [
                           Text(
-                              "Number of bookable seats: ${search[index]["numberOfBookableSeats"]}"),
+                              "Seats:  ${search[index]["numberOfBookableSeats"]}"),
                           const SizedBox(
                             width: 40,
                           ),
                           Text(
-                              "Duration: ${search[index]["itineraries"]["duration"]}")
+                              "Duration:  ${search[index]["itineraries"][0]["duration"]}")
                         ],
                       )
                     ],
                   ),
-                  subtitle: Row(
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      const SizedBox(height: 20),
                       Text(
-                          "Departure (D/T)): ${search[index]["itineraries"]["segments"][index]["departure"]["at"]}"),
+                          "Departure (D/T)): ${search[index]["itineraries"][0]["segments"][0]["departure"]["at"]}"),
                       const SizedBox(
-                        width: 20,
+                        height: 5,
                       ),
                       Text(
-                          "Arrival (D/T): ${search[index]["itineraries"]["segments"][index]["arrival"]["at"]}")
+                          "Arrival (D/T): ${search[index]["itineraries"][0]["segments"][0]["arrival"]["at"]}")
                     ],
                   ),
                   trailing: Column(
                     children: [
                       Text("${search[index]["price"]["currency"]}"),
-                      const SizedBox(height: 10),
-                      Text("${search[index]["price"]["total"]}")
+                      const SizedBox(height: 5),
+                      Text("${search[index]["price"]["total"]}", style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700),)
                     ],
                   ),
                   leading: Column(
@@ -118,7 +122,7 @@ class _FlightOfferSearchDisplayState extends State<FlightOfferSearchDisplay> {
                       const Text("Airline"),
                       const SizedBox(height: 10),
                       Text(
-                          "${search[index]["itineraries"]["segments"][index]["carrierCode"]}")
+                          "${search[index]["itineraries"][0]["segments"][0]["carrierCode"]}", style: TextStyle(color: kOrange(),fontWeight: FontWeight.w500),)
                     ],
                   ),
                 ),
