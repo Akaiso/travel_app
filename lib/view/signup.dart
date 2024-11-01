@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:travel_app/utils/font.dart';
 import 'package:travel_app/view/login.dart';
 
@@ -28,6 +26,7 @@ class _SignUpState extends State<SignUp> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           "Sign Up",
           style: kBoldNormal(),

@@ -23,7 +23,9 @@ class _LogInState extends State<LogIn> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(title:  Text("Log In", style: kBoldNormal(),),),
+        appBar: AppBar(
+          centerTitle: true,
+          title:  Text("Log In", style: kBoldNormal(),),),
           body: Column(
         children: [
           const SizedBox(

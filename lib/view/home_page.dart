@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:travel_app/service/dio_client.dart';
 import 'package:travel_app/utils/font.dart';
 import 'package:travel_app/view/book_flight.dart';
 import 'package:travel_app/widgets/card_with_double_rows.dart';
@@ -14,12 +12,10 @@ import 'package:travel_app/widgets/footer.dart';
 import 'package:travel_app/widgets/footer_appendix.dart';
 import 'package:travel_app/widgets/hover_effect_button.dart';
 import 'package:travel_app/widgets/scroll_to_top_indicator.dart';
-
 import '../widgets/carousel.dart';
 import '../widgets/modal.dart';
 import '../widgets/service_tabs.dart';
 import '../widgets/suggestion_info.dart';
-import 'login.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -346,60 +342,48 @@ class _HomePageState extends State<HomePage>
                                       runSpacing: 4,
                                       children: [
                                         offeredServicesTabsNavigator(() {
-                                          Get.to(()=> const BookFlight());
-                                         // DioClient().availableFlightOffers(origin: "DXB", destination: "LON", departureDate: "2024-10-24", numberOfAdult: 1, nonStop: false);
-
+                                          Get.to(() => const BookFlight());
+                                          // DioClient().availableFlightOffers(origin: "DXB", destination: "LON", departureDate: "2024-10-24", numberOfAdult: 1, nonStop: false);
                                         },
                                             " Flight ",
                                             'assets/images/flight.png',
                                             Colors.white),
-                                        offeredServicesTabsNavigator(
-                                            () {
-                                              showDialog(
-                                                  context: this.context,
-                                                  builder: (context) =>
+                                        offeredServicesTabsNavigator(() {
+                                          showDialog(
+                                              context: this.context,
+                                              builder: (context) =>
                                                   const CustomModal());
-                                            },
-                                            " stays ",
-                                            "assets/images/hotel.png",
+                                        }, " stays ", "assets/images/hotel.png",
                                             Colors.white),
-                                        offeredServicesTabsNavigator(
-                                            () {
-                                              showDialog(
-                                                  context: this.context,
-                                                  builder: (context) =>
+                                        offeredServicesTabsNavigator(() {
+                                          showDialog(
+                                              context: this.context,
+                                              builder: (context) =>
                                                   const CustomModal());
-                                            },
+                                        },
                                             " Cruise ",
                                             "assets/images/cruise.png",
                                             Colors.white),
-                                        offeredServicesTabsNavigator(
-                                            () {
-                                              showDialog(
-                                                  context: this.context,
-                                                  builder: (context) =>
+                                        offeredServicesTabsNavigator(() {
+                                          showDialog(
+                                              context: this.context,
+                                              builder: (context) =>
                                                   const CustomModal());
-                                            },
-                                            " Visa ",
-                                            "assets/images/visa.png",
+                                        }, " Visa ", "assets/images/visa.png",
                                             Colors.white),
-                                        offeredServicesTabsNavigator(
-                                            () {
-                                              showDialog(
-                                                  context: this.context,
-                                                  builder: (context) =>
+                                        offeredServicesTabsNavigator(() {
+                                          showDialog(
+                                              context: this.context,
+                                              builder: (context) =>
                                                   const CustomModal());
-                                            },
-                                            " Rides ",
-                                            'assets/images/rides.png',
+                                        }, " Rides ", 'assets/images/rides.png',
                                             Colors.white),
-                                        offeredServicesTabsNavigator(
-                                            () {
-                                              showDialog(
-                                                  context: this.context,
-                                                  builder: (context) =>
+                                        offeredServicesTabsNavigator(() {
+                                          showDialog(
+                                              context: this.context,
+                                              builder: (context) =>
                                                   const CustomModal());
-                                            },
+                                        },
                                             " Holiday",
                                             'assets/images/holiday.png',
                                             Colors.white),
@@ -593,11 +577,11 @@ class _HomePageState extends State<HomePage>
                           580, //MediaQuery.of(context).size.width < 1000 ? 555 : 590,
                       left: MediaQuery.of(context).size.width * 0.40,
                       right: MediaQuery.of(context).size.width * 0.40,
-                      child:  SizedBox(
+                      child: SizedBox(
                         height: 50,
                         child: HoverEffectButton(
-                          onTap: (){
-                            Get.to(()=> const BookFlight());
+                          onTap: () {
+                            Get.to(() => const BookFlight());
                           },
                           fontWeight: FontWeight.w700,
                           fontSize: 25,

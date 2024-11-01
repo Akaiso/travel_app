@@ -12,7 +12,9 @@ class _HolidaysState extends State<Holidays> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
-      appBar: AppBar(title:  Text("Holidays", style: kBoldNormal(),))
+      appBar: AppBar(
+        centerTitle: true,
+          title:  Text("Holidays", style: kBoldNormal(),))
     ));
   }
 }

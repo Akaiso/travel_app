@@ -28,7 +28,3 @@ class ChangeOriginProvider extends ChangeNotifier{
 
 }
 
-class DioSearchListProvider extends ChangeNotifier{
-  dynamic searchList = [];
-
-}

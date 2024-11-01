@@ -19,6 +19,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     return SafeArea(
         child: Scaffold(
             appBar: AppBar(
+              centerTitle: true,
               title: Text(
                 "Forgot password",
                 style: kBoldNormal(),

@@ -1,6 +1,4 @@
 import 'dart:core';
-import 'dart:core';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -52,7 +50,8 @@ class DioClient {
     return;
   }
 
-  Future<dynamic> availableFlightOffers({required String origin, required bool nonStop}
+  Future<dynamic> availableFlightOffers(
+      {required String origin, required bool nonStop}
       // {
       //   required String origin,
       // required String destination,
@@ -66,10 +65,9 @@ class DioClient {
       // String? currency,
       // String? maxPrice
 
-     // }
+      // }
 
       ) async {
-
     await getAuthorization();
     dio.options.headers = {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -82,17 +80,19 @@ class DioClient {
     //   "departureDate" : departureDate,
     //   "adults" : numberOfAdult,
     //  // if(nonStop != null) "nonStop" : nonStop.toString(),
-     // if(returnDate != null) "returnDate" : returnDate,
-      //if(numberOfChildren != null) "children" : numberOfChildren,
-     // if(numberOfInfants != null) "infants" : numberOfInfants,
-     // if(travelClass != null) "travelClass" : travelClass,
-      //if(currency != null) "currencyCode" : currency,
-     // if(maxPrice != null) "maxPrice" : maxPrice,
-   // };
+    // if(returnDate != null) "returnDate" : returnDate,
+    //if(numberOfChildren != null) "children" : numberOfChildren,
+    // if(numberOfInfants != null) "infants" : numberOfInfants,
+    // if(travelClass != null) "travelClass" : travelClass,
+    //if(currency != null) "currencyCode" : currency,
+    // if(maxPrice != null) "maxPrice" : maxPrice,
+    // };
 
-    Map<String, dynamic>queryParameter = {"originLocationCode" : origin, "nonStop" : nonStop.toString()};
+    Map<String, dynamic> queryParameter = {
+      "originLocationCode": origin,
+      "nonStop": nonStop.toString()
+    };
     try {
-
       // Response response = await dio.get(queryParameters: queryParameters,
       //     "https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=$origin&destinationLocationCode=$destination&departureDate=$departureDate&returnDate=$returnDate&adults=$numberOfAdult&children=1&infants=1&travelClass=ECONOMY&nonStop=false&currencyCode=USD&maxPrice=100000&max=250");
       ///ANOTHER API WITH INCOMPLETE PARAMATER
@@ -102,15 +102,16 @@ class DioClient {
 
       Response response = await dio.get(
           "https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=$origin&destinationLocationCode=BKK&departureDate=2024-10-31&adults=1&nonStop=$nonStop&max=250",
-      queryParameters: queryParameter
-      );
+          queryParameters: queryParameter);
 
-       dynamic searchList = response.data;
+      dynamic searchList = response.data;
       int searchListStatusCode = response.statusCode!;
-      debugPrint("this is the status code for the searchList: $searchListStatusCode");
+      debugPrint(
+          "this is the status code for the searchList: $searchListStatusCode");
       debugPrint("this is the search list: $searchList");
-      GetStorage().write("searchList",searchList['data']);
-     // debugPrint("this is the origin: $origin");
+      GetStorage()
+          .write("searchListResponseFromDioClientClass", searchList['data']);
+      // debugPrint("this is the origin: $origin");
     } on DioException catch (e) {
       debugPrint("available flight error: $e");
       Get.rawSnackbar(
@@ -129,6 +130,6 @@ class DioClient {
               "$e...Something went wrong. Make sure fields marked with asterisks are selected");
     }
 
-     return ;
+    return;
   }
 }

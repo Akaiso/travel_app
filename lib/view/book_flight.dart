@@ -9,6 +9,7 @@ import 'package:travel_app/model/provider.dart';
 import 'package:travel_app/service/dio_client.dart';
 import 'package:travel_app/utils/colors.dart';
 
+import '../utils/data_bank.dart';
 import '../utils/font.dart';
 
 class BookFlight extends StatefulWidget {
@@ -20,54 +21,6 @@ class BookFlight extends StatefulWidget {
 
 class _BookFlightState extends State<BookFlight> {
   ///LIST OF AIRPORT IATA CODE
-  List airports = [
-    "ATL",
-    "LAX",
-    "DXB",
-    "LHR",
-    "HND",
-    "CDG",
-    "FRA",
-    "SIN",
-    "AMS",
-    "DFW",
-    "PEK",
-    "MAD",
-    "MIA",
-    "YYZ",
-    "SYD",
-    "CGK",
-    "GRU",
-    "MEX",
-    "BKK",
-    "ICN",
-    "HKG",
-    "NRT",
-    "ZRH",
-    "IST",
-    "VIE",
-    "BRU",
-    "DOH",
-    "YVR",
-    "RUH",
-    "CAI",
-    "JNB",
-    "KUL",
-    "MNL",
-    "DEL",
-    "VIE",
-    "MUC",
-    "FCO",
-    "BUD",
-    "ARN",
-    "CPH",
-    "HEL",
-    "ATH",
-    "LIS",
-    "MXP",
-    "BRU",
-    "NYC"
-  ];
 
   String? onChangeValue;
   List searchedList = [];
@@ -81,7 +34,7 @@ class _BookFlightState extends State<BookFlight> {
   String numberOfChildren = '0';
   String currency = "USD";
   String travelClass = "ECONOMY";
-  bool? nonStop ;
+  bool? nonStop;
 
   String selectedDepartureDate = ''; //DateTime.now().toString().split(' ')[0];
   String selectedReturnDate = ' ';
@@ -104,118 +57,8 @@ class _BookFlightState extends State<BookFlight> {
     return selectedReturnDate;
   }
 
-  List flightOptionList = [
-    "DUBAI",
-    "NEW YORK CITY",
-    "24-10-12",
-    "",
-    '1',
-    '0',
-    '0',
-    "USD",
-    "ECONOMY"
-  ];
-  List flightOptionListSubtitle = [
-    "origin",
-    "destination",
-    "departureDate",
-    "returnDate",
-    "numberOfAdult",
-    "numberOfInfants",
-    "numberOfChildren",
-    "currency",
-    "travelClass"
-  ];
   TextEditingController originSearchController = TextEditingController();
   TextEditingController destinationSearchController = TextEditingController();
-
-  ///UNUSED SHOWMODALBOTTOMSHEET BECAUSE THIS ITERATES AND NOT SUITABLE YET
-  // void showBottomSheet() {
-  //   showModalBottomSheet(
-  //       // isScrollControlled: true,
-  //       context: context,
-  //       builder: (context) => DraggableScrollableSheet(
-  //           initialChildSize: 1,
-  //           builder: (context, scrollController) {
-  //             return Padding(
-  //               padding: const EdgeInsets.symmetric(horizontal: 20.0),
-  //               child: Column(
-  //                 children: [
-  //                   const SizedBox(
-  //                     height: 20,
-  //                   ),
-  //                   TextFormField(
-  //                       // controller: airportSearchController,
-  //                       decoration: const InputDecoration(
-  //                         labelText: "Search",
-  //                         icon: Icon(Icons.search),
-  //                       ),
-  //                       onChanged: (value) {
-  //                         searchAirports(value);
-  //                         debugPrint(
-  //                             "This is the second searchedList: $searchedList");
-  //                       }),
-  //                   const SizedBox(
-  //                     height: 20,
-  //                   ),
-  //                   Expanded(
-  //                     child:
-  //                         //Text("${airports.map((e) => e)}"), //airports.map((e) => Text(e)).toList();
-  //                         ListView.builder(
-  //                       itemCount: searchedList.length,
-  //                       // itemCount: airports.length,
-  //                       itemBuilder: (cont, index) {
-  //                         return Text("${searchedList[index]}");
-  //                         // return Text("${searchedList[index]}");
-  //                         // return Text(searchedList[index]);
-  //                         // return ;
-  //                       },
-  //                     ),
-  //                   ),
-  //                 ],
-  //               ),
-  //             );
-  //           }));
-  // }
-
-  ///BOOKFLIGHTOPTIONS .  AUTOBUILDS THE LIST OF OPTIONS TO SELECT FOR YOUR FLIGHT BOOKING
-  Widget bookFlightOptions() {
-    return ListView.builder(
-        shrinkWrap: true,
-        itemCount: flightOptionList.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 10),
-            child: ListTile(
-              onTap: () {
-                setState(() {
-                  onChangeValue = flightOptionList[index];
-                  debugPrint("this is the onChangeValue: $onChangeValue");
-                });
-
-                if (index == 2 || index == 3) {
-                  context
-                      .read<ChangeOriginProvider>()
-                      .changeOrigin(flightOptionList[index]);
-                  //  showCalender();
-                } // else //if(index == ){}
-                //showBottomSheet();
-              },
-              title: Text(
-                context
-                    .watch<ChangeOriginProvider>()
-                    .origin, // flightOptionList[index],
-                style: const TextStyle(color: Colors.white),
-              ),
-              subtitle: Text(
-                flightOptionListSubtitle[index],
-                style: const TextStyle(color: Colors.white),
-              ),
-              tileColor: Colors.teal,
-            ),
-          );
-        });
-  }
 
   ///FUNCTION TO SHOW BOTTOM SHEET . TAKES IN A PARAMETER: TextEditingController for each option used in Origin and Destination
   void showBottomSheet(TextEditingController controller) {
@@ -289,9 +132,10 @@ class _BookFlightState extends State<BookFlight> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    originSearchController.text = "DUBAI";
-    destinationSearchController.text = "NEW YORK CITY";
-
+    originSearchController.text =
+        "LOS - Murtala Muhammed International Airport, Lagos, Nigeria";
+    destinationSearchController.text =
+        "DXB - Dubai International Airport, Dubai, UAE";
   }
 
   @override
@@ -300,6 +144,7 @@ class _BookFlightState extends State<BookFlight> {
         child: Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+        centerTitle: true,
         title: Text("Flight", style: kBoldNormal()),
       ),
       body: SingleChildScrollView(
@@ -484,7 +329,8 @@ class _BookFlightState extends State<BookFlight> {
                                           horizontal: 30.0, vertical: 10),
                                       child: InkWell(
                                           onTap: () {
-                                            numberOfAdult = (index + 1).toString();
+                                            numberOfAdult =
+                                                (index + 1).toString();
                                             Navigator.pop(context);
                                             setState(() {});
                                           },
@@ -562,9 +408,7 @@ class _BookFlightState extends State<BookFlight> {
 
               ///TRAVEL CLASS TILE
               ListTile(
-                onTap: (){
-                 // DioClient().availableFlightOffers(origin: "SYD", destination: "BKK", departureDate: "2024-10-29", numberOfAdult: "1");
-                },
+                onTap: () {},
                 title: Text(
                   travelClass,
                   style: const TextStyle(color: Colors.white),
@@ -582,36 +426,31 @@ class _BookFlightState extends State<BookFlight> {
 
               ///SEARCH BUTTON
               InkWell(
-                onTap: () async{
-                  if(numberOfAdult == "1"){nonStop = false;} else {nonStop = true;}
-                  await DioClient().availableFlightOffers(origin:originSearchController.text, nonStop: nonStop! );
+                onTap: () async {
+                  if (numberOfAdult == "1") {
+                    nonStop = false;
+                  } else {
+                    nonStop = true;
+                  }
+                  GetStorage().write(
+                      "editedOriginSearchController.textFromBookFlightClass",
+                      originSearchController.text.split('-')[0].trim());
+                  await DioClient().availableFlightOffers(
+                      origin: GetStorage().read(
+                          "editedOriginSearchController.textFromBookFlightClass"),
+                      nonStop: nonStop!);
                   debugPrint("The nonstop value is: $nonStop");
-                 // await DioClient().testApi();
-                 //  try{
-                 //    await DioClient().availableFlightOffers(
-                 //        origin: originSearchController.text.trim(),
-                 //        destination: destinationSearchController.text.trim(),
-                 //        departureDate: selectedDepartureDate,
-                 //        numberOfAdult: numberOfAdult
-                 //    );
-                 //    debugPrint("${originSearchController.text.trim()} ${destinationSearchController.text} $selectedDepartureDate $numberOfAdult");
-                 //  }catch (e){
-                 //    Get.rawSnackbar(
-                 //        snackPosition: SnackPosition.BOTTOM,
-                 //        duration: const Duration(seconds: 4),
-                 //        icon: const Icon(Icons.error,color: Colors.orange,),
-                 //        titleText: const Text(
-                 //          "Error",
-                 //          style: TextStyle(color: Colors.orange),
-                 //        ),
-                 //        title: "Error",
-                 //        message:
-                 //        "$e...Something went wrong. Make sure fields marked with asterisks are selected");
-                 //  }
 
-                  dynamic searL = GetStorage().read("searchList");
+                  dynamic searL =
+                      GetStorage().read("searchListResponseFromDioClientClass");
                   debugPrint("This is from GetStorage: $searL");
-                  Get.to(()=> const FlightOfferSearchDisplay());
+                  if (GetStorage()
+                          .read("searchListResponseFromDioClientClass") ==
+                      null) {
+                    const GetSnackBar(title: "An error occurred; try again");
+                  } else {
+                    Get.to(() => const FlightOfferSearchDisplay());
+                  }
                 },
                 child: Container(
                   color: Colors.white,

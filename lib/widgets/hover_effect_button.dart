@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:travel_app/utils/colors.dart';
 
 class HoverEffectButton extends StatefulWidget {

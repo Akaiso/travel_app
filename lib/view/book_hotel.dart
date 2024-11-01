@@ -13,7 +13,9 @@ class _BookHotelState extends State<BookHotel> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
-      appBar: AppBar(title:  Text("Stays",style: kBoldNormal())),
+      appBar: AppBar(
+        centerTitle: true,
+          title:  Text("Stays",style: kBoldNormal())),
     ));
   }
 }

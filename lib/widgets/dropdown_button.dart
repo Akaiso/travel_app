@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:travel_app/utils/colors.dart';
 import 'package:travel_app/view/home_page.dart';
 import 'package:travel_app/view/login.dart';
@@ -73,9 +71,11 @@ class _LanguageDropdownState extends State<LanguageDropdown> {
           value: _selectedValue,
           style: kBoldWhiteNormal(),
           dropdownColor: kBlue(),
-          items:  [
-            DropdownMenuItem(value: 'English', child: Text('English',style: kBoldNormal())),
-            DropdownMenuItem(value: 'French', child: Text('French', style: kBoldNormal())),
+          items: [
+            DropdownMenuItem(
+                value: 'English', child: Text('English', style: kBoldNormal())),
+            DropdownMenuItem(
+                value: 'French', child: Text('French', style: kBoldNormal())),
           ],
           onChanged: (value) {
             setState(() {

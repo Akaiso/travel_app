@@ -36,7 +36,6 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => ChatListProvider()),
         ChangeNotifierProvider(create: (context) => CounterProvider()),
         ChangeNotifierProvider(create: (context) => ChangeOriginProvider()),
-        ChangeNotifierProvider(create: (context) => DioSearchListProvider()),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

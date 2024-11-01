@@ -40,6 +40,7 @@ class _ContactUsState extends State<ContactUs> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           title: Text(
             "Contact Us",
             style: kBoldNormal(),

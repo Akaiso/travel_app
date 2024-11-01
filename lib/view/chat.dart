@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../model/provider.dart';
 import '../utils/font.dart';
 
@@ -30,14 +31,14 @@ class _ChatState extends State<Chat> {
       });
       _messageController.clear();
       dynamic collectn = _firestore.collection.toString();
-      print("this is collectn::::::>>>>>>>>>>>>>>>>> $collectn");
+      debugPrint("this is collectn::::::>>>>>>>>>>>>>>>>> $collectn");
     } else {
       await _firestore.collection('messages').add({
         'text': _messageController.text.trim(),
         'sender': null,
         'createdAt': Timestamp.now(),
       });
-      print("this is collectn 2::::::>>>>>>>>>>>>>>>>> ");
+      debugPrint("this is collectn 2::::::>>>>>>>>>>>>>>>>> ");
       //return CircularProgressIndicator();
     }
   }
@@ -80,6 +81,7 @@ class _ChatState extends State<Chat> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text("Customer Support Chat", style: kBoldNormal()),
       ),
       body: Column(
@@ -126,7 +128,6 @@ class _ChatState extends State<Chat> {
                   ),
                 );
 
-                ;
 
                 // Padding(
                 //   padding: const EdgeInsets.all(8.0),
@@ -205,7 +206,7 @@ class _ChatState extends State<Chat> {
                     setState(() {
                       validateChatField();
                       // _sendMessage();
-                      print(ChatListProvider().chat);
+                      debugPrint("${ChatListProvider().chat}");
                       if (_messageController.text == '') {
                         return;
                       } else {
@@ -215,7 +216,7 @@ class _ChatState extends State<Chat> {
                       }
                       _messageController.clear();
                       context.read<CounterProvider>().changeCounter();
-                      print("Hi");
+                      debugPrint("Hi");
                     });
                   },
                   icon: const Icon(Icons.send),
