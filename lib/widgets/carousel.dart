@@ -11,10 +11,10 @@ class MultiImageCarousel extends StatefulWidget {
 class _MultiImageCarouselState extends State<MultiImageCarousel> {
   final CarouselController _controller = CarouselController();
   final List<String> _images = [
-    'assets/images/image1.png',
-    'assets/images/image2.jpg',
-    'assets/images/image3.jpg',
-    'assets/images/image1.png',
+    'assets/images/TRIPS1.png',
+    'assets/images/TRIPS2.png',
+    'assets/images/TRIPS3.png',
+    'assets/images/TRIPS4.png',
   ];
 
   // int _currentIndex = 0;

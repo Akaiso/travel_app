@@ -4,7 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
-import 'package:travel_app/model/flight_offer_search.dart';
+import 'package:travel_app/view/flight_offer_search.dart';
 import 'package:travel_app/model/provider.dart';
 import 'package:travel_app/service/dio_client.dart';
 import 'package:travel_app/utils/colors.dart';
@@ -30,13 +30,14 @@ class _BookFlightState extends State<BookFlight> {
   String origin = "DUBAI";
   String destination = "NEW YORK CITY";
   String numberOfAdult = "1";
-  String numberOfInfants = '0';
-  String numberOfChildren = '0';
-  String currency = "USD";
+  String numberOfInfants = ' ';
+  String numberOfChildren = ' ';
+  String currency = "EUR";
   String travelClass = "ECONOMY";
-  bool? nonStop;
+  String nonStop = 'false';
+  bool isSearching = false;
 
-  String selectedDepartureDate = ''; //DateTime.now().toString().split(' ')[0];
+  String selectedDepartureDate = ' '; //DateTime.now().toString().split(' ')[0];
   String selectedReturnDate = ' ';
   DateFormat? dateFormat;
 
@@ -92,7 +93,7 @@ class _BookFlightState extends State<BookFlight> {
                     child: ListView.builder(
                       itemCount: searchedList.length,
                       itemBuilder: (cont, index) {
-                        return InkWell(
+                        return ListTile(
                             onTap: () {
                               setState(() {});
                               setModalState(() {
@@ -105,7 +106,7 @@ class _BookFlightState extends State<BookFlight> {
                                 context,
                               );
                             },
-                            child: Text("${searchedList[index]}"));
+                            title: Text("${searchedList[index]}"));
                       },
                     ),
                   ),
@@ -136,6 +137,8 @@ class _BookFlightState extends State<BookFlight> {
         "LOS - Murtala Muhammed International Airport, Lagos, Nigeria";
     destinationSearchController.text =
         "DXB - Dubai International Airport, Dubai, UAE";
+
+    isSearching = false;
   }
 
   @override
@@ -360,6 +363,41 @@ class _BookFlightState extends State<BookFlight> {
 
               ///NUMBER OF INFANTS TILE
               ListTile(
+                onTap: () {
+                  showModalBottomSheet(
+                      isScrollControlled: true,
+                      context: context,
+                      builder: (context) {
+                        return SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              const SizedBox(
+                                height: 30,
+                              ),
+                              ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: 9,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 30.0, vertical: 10),
+                                      child: InkWell(
+                                          onTap: () {
+                                            numberOfInfants =
+                                                (index + 1).toString();
+                                            Navigator.pop(context);
+                                            setState(() {});
+                                          },
+                                          child: SizedBox(
+                                              height: 30,
+                                              child: Text("${index + 1}"))),
+                                    );
+                                  }),
+                            ],
+                          ),
+                        );
+                      });
+                },
                 title: Text(
                   numberOfInfants,
                   style: const TextStyle(color: Colors.white),
@@ -376,12 +414,99 @@ class _BookFlightState extends State<BookFlight> {
 
               ///NUMBER OF CHILDREN TILE
               ListTile(
+                onTap: () {
+                  showModalBottomSheet(
+                      isScrollControlled: true,
+                      context: context,
+                      builder: (context) {
+                        return SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              const SizedBox(
+                                height: 30,
+                              ),
+                              ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: 9,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 30.0, vertical: 10),
+                                      child: InkWell(
+                                          onTap: () {
+                                            numberOfChildren =
+                                                (index + 1).toString();
+                                            Navigator.pop(context);
+                                            setState(() {});
+                                          },
+                                          child: SizedBox(
+                                              height: 30,
+                                              child: Text("${index + 1}"))),
+                                    );
+                                  }),
+                            ],
+                          ),
+                        );
+                      });
+                },
                 title: Text(
                   numberOfChildren,
                   style: const TextStyle(color: Colors.white),
                 ),
                 subtitle: const Text(
                   "Number of children",
+                  style: TextStyle(color: Colors.white),
+                ),
+                tileColor: Colors.teal,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+
+              ///NONSTOP TILE
+              ListTile(
+                onTap: () {
+                  showModalBottomSheet(
+                      isScrollControlled: true,
+                      context: context,
+                      builder: (context) {
+                        return SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              const SizedBox(
+                                height: 30,
+                              ),
+                              ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: 2,
+                                  itemBuilder: (context, index) {
+                                    List nonStopValues = ['false', 'true'];
+                                    return Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 30.0, vertical: 10),
+                                      child: InkWell(
+                                          onTap: () {
+                                            nonStop = nonStopValues[index];
+                                            Navigator.pop(context);
+                                            setState(() {});
+                                          },
+                                          child: SizedBox(
+                                              height: 30,
+                                              child:
+                                                  Text(nonStopValues[index]))),
+                                    );
+                                  }),
+                            ],
+                          ),
+                        );
+                      });
+                },
+                title: Text(
+                  nonStop,
+                  style: const TextStyle(color: Colors.white),
+                ),
+                subtitle: const Text(
+                  "non-stop  *",
                   style: TextStyle(color: Colors.white),
                 ),
                 tileColor: Colors.teal,
@@ -408,7 +533,49 @@ class _BookFlightState extends State<BookFlight> {
 
               ///TRAVEL CLASS TILE
               ListTile(
-                onTap: () {},
+                onTap: () {
+                  showModalBottomSheet(
+                      isScrollControlled: true,
+                      context: context,
+                      builder: (context) {
+                        return SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              const SizedBox(
+                                height: 30,
+                              ),
+                              ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: 5,
+                                  itemBuilder: (context, index) {
+                                    List travelClassValues = [
+                                      ' ',
+                                      'ECONOMY',
+                                      'PREMIUM_ECONOMY',
+                                      'BUSINESS',
+                                      'FIRST'
+                                    ];
+                                    return Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 30.0, vertical: 10),
+                                      child: InkWell(
+                                          onTap: () {
+                                            travelClass =
+                                                travelClassValues[index];
+                                            Navigator.pop(context);
+                                            setState(() {});
+                                          },
+                                          child: SizedBox(
+                                              height: 30,
+                                              child: Text(
+                                                  travelClassValues[index]))),
+                                    );
+                                  }),
+                            ],
+                          ),
+                        );
+                      });
+                },
                 title: Text(
                   travelClass,
                   style: const TextStyle(color: Colors.white),
@@ -426,24 +593,72 @@ class _BookFlightState extends State<BookFlight> {
 
               ///SEARCH BUTTON
               InkWell(
+                child: Container(
+                  color: Colors.white,
+                  width: double.infinity,
+                  height: 50,
+                  child: Center(
+                      child: isSearching
+                          ? CircularProgressIndicator(
+                              color: kOrange(),
+                            )
+                          : Text(
+                              "Search",
+                              style: TextStyle(
+                                  color: kOrange(),
+                                  fontWeight: FontWeight.w600),
+                            )),
+                ),
                 onTap: () async {
-                  if (numberOfAdult == "1") {
-                    nonStop = false;
-                  } else {
-                    nonStop = true;
-                  }
+                  setState(() {
+                    isSearching = true;
+                  });
+
                   GetStorage().write(
                       "editedOriginSearchController.textFromBookFlightClass",
                       originSearchController.text.split('-')[0].trim());
+                  GetStorage().write(
+                      "editedDestinationSearchController.textFromBookFlightClass",
+                      destinationSearchController.text.split('-')[0].trim());
+                  GetStorage().write("selectedDepartureDateFromBookFlightClass",
+                      selectedDepartureDate);
+                  GetStorage().write("selectedNumberOfAdults", numberOfAdult);
+                  GetStorage().write("selectedReturnDate", selectedReturnDate);
+                  GetStorage().write("selectedNonStop", nonStop);
+                  GetStorage()
+                      .write("selectedNumberOfChildren", numberOfChildren);
+                  GetStorage()
+                      .write("selectedNumberOfInfants", numberOfInfants);
+                  GetStorage().write("selectedTravelClass", travelClass);
+                  //await DioClient().testApi();
                   await DioClient().availableFlightOffers(
-                      origin: GetStorage().read(
-                          "editedOriginSearchController.textFromBookFlightClass"),
-                      nonStop: nonStop!);
+                    origin:  GetStorage().read(
+                        "editedOriginSearchController.textFromBookFlightClass"),
+                    destination:  GetStorage().read(
+                        "editedDestinationSearchController.textFromBookFlightClass"),
+                    departureDate: selectedDepartureDate == ' '
+                        ? selectedDepartureDate =
+                             DateTime.now().toString().split(' ')[0]
+                        :  GetStorage()
+                            .read("selectedDepartureDateFromBookFlightClass"),
+                    numberOfAdult:  GetStorage().read("selectedNumberOfAdults"),
+                    nonStop:  GetStorage().read("selectedNonStop"),
+                   // returnDate: GetStorage().read("selectedReturnDate"),
+                    // numberOfChildren:
+                        // GetStorage().read("selectedNumberOfChildren"),
+                    // numberOfInfants:
+                        //  GetStorage().read("selectedNumberOfInfants"),
+                    // travelClass:  GetStorage().read("selectedTravelClass"),
+                  );
                   debugPrint("The nonstop value is: $nonStop");
+                  debugPrint("The return date is: $selectedReturnDate");
+                  debugPrint("The number of children is: $numberOfChildren");
+                  debugPrint("The number of Infants is: $numberOfInfants");
+                  debugPrint("The travel class is: $travelClass");
 
-                  dynamic searL =
+                  dynamic searchResponse =
                       GetStorage().read("searchListResponseFromDioClientClass");
-                  debugPrint("This is from GetStorage: $searL");
+                  debugPrint("This is from GetStorage: $searchResponse");
                   if (GetStorage()
                           .read("searchListResponseFromDioClientClass") ==
                       null) {
@@ -451,17 +666,10 @@ class _BookFlightState extends State<BookFlight> {
                   } else {
                     Get.to(() => const FlightOfferSearchDisplay());
                   }
+                  setState(() {
+                    isSearching = false;
+                  });
                 },
-                child: Container(
-                  color: Colors.white,
-                  width: double.infinity,
-                  height: 50,
-                  child: Center(
-                      child: Text(
-                    "Search",
-                    style: TextStyle(color: kOrange()),
-                  )),
-                ),
               ),
               const SizedBox(
                 height: 100,

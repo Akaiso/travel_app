@@ -154,7 +154,7 @@ class _HomePageState extends State<HomePage>
                     decoration: const BoxDecoration(
                       color: Colors.blue,
                       image: DecorationImage(
-                          image: AssetImage('assets/images/airport2.jpg'),
+                          image: AssetImage('assets/images/airport.jpg'),
                           fit: BoxFit.cover),
                     ),
                     child: Padding(
