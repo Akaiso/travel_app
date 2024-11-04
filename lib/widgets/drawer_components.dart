@@ -10,6 +10,7 @@ import '../view/book_flight.dart';
 import '../view/book_hotel.dart';
 import '../view/book_ride.dart';
 import '../view/chat.dart';
+import '../view/currency_converter.dart';
 
 List drawerContent = [
   Row(
@@ -133,11 +134,28 @@ List drawerContent = [
             ))
       ],
     );
-  })
+  }),
+  Row(
+    children: [
+      const Icon(
+        Icons.currency_exchange,
+        color: Color(0xff1e3138),
+      ),
+      const SizedBox(width: 10),
+      Text("Currency Converter",
+          style: GoogleFonts.openSans(
+            color: kGreenFooter(),
+            fontSize: 13,
+            fontWeight: FontWeight.w700,
+          ))
+    ],
+  ),
 ];
 
 
-List<Widget> drawerPages = [const BookFlight(), const BookHotel(), const BookRide(), const Holidays(), const ContactUs(), const HomePage(), const Chat(), const ContactUs()];
+List<Widget> drawerPages = [const BookFlight(), const BookHotel(), const BookRide(), const Holidays(), const ContactUs(), const HomePage(), const Chat(), const ContactUs(), const CurrencyConverterScreen()];
+
+
 
 Future<void> toWhatsApp(BuildContext context) async{
   const String phoneNumber = "+2348086652587";

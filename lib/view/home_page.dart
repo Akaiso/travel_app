@@ -24,21 +24,6 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-Row flightRowRow = const Row(
-  children: [
-    FlightOffersModel(),
-    FlightOffersModel(),
-    FlightOffersModel(),
-    FlightOffersModel(),
-    FlightOffersModel(),
-    FlightOffersModel(),
-    FlightOffersModel(),
-    FlightOffersModel(),
-    FlightOffersModel(),
-    FlightOffersModel(),
-  ],
-);
-
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   ScrollController scrollControllerHome = ScrollController();
@@ -87,6 +72,71 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> flightOffersModelList = [
+      const FlightOffersModel(
+        imageLink: "assets/images/001.png",
+        tripType: "ONE WAY",
+        fromTo: 'Lagos -> Dubai',
+        ticketFare: '₦ 1,300,456',
+      ),
+      const FlightOffersModel(
+        imageLink: "assets/images/002.png",
+        tripType: "ONE WAY",
+        fromTo: 'Lagos -> France',
+        ticketFare: '₦ 2,100,000',
+      ),
+      const FlightOffersModel(
+        imageLink: "assets/images/003.png",
+        tripType: "ONE WAY",
+        fromTo: 'Lagos -> Cape Verd',
+        ticketFare: '₦ 900,500',
+      ),
+      const FlightOffersModel(
+        imageLink: "assets/images/004.png",
+        tripType: "ONE WAY",
+        fromTo: 'Lagos -> California',
+        ticketFare: '₦ 2,500,000',
+      ),
+      const FlightOffersModel(
+        imageLink: "assets/images/005.png",
+        tripType: "ONE WAY",
+        fromTo: 'Lagos -> Toronto',
+        ticketFare: '₦ 2,800,500',
+      ),
+      const FlightOffersModel(
+        imageLink: "assets/images/006.png",
+        tripType: "ONE WAY",
+        fromTo: 'Lagos -> Singapore',
+        ticketFare: '₦ 3,500,00',
+      ),
+      const FlightOffersModel(
+        imageLink: "assets/images/007.png",
+        tripType: "ONE WAY",
+        fromTo: 'Lagos -> Brazil',
+        ticketFare: '₦ 1,800,000',
+      ),
+      const FlightOffersModel(
+        imageLink: "assets/images/008.png",
+        tripType: "ONE WAY",
+        fromTo: 'Lagos -> Turkey',
+        ticketFare: '₦ 2,2000,300',
+      ),
+      const FlightOffersModel(
+        imageLink: "assets/images/009.png",
+        tripType: "ONE WAY",
+        fromTo: 'Lagos -> Johannesburg',
+        ticketFare: '₦ 1,750,999',
+      ),
+      const FlightOffersModel(
+        imageLink: "assets/images/010.png",
+        tripType: "ONE WAY",
+        fromTo: 'Lagos -> Moscow',
+        ticketFare: '₦ 3,800,000',
+      ),
+    ];
+
+    List<Widget> FlightOffers = flightOffersModelList.map((e) => e).toList();
+
     Row hotelRowRow = Row(
       children: [
         Container(
@@ -919,10 +969,10 @@ class _HomePageState extends State<HomePage>
                     ),
                   ),
                   row1: _isFlightSelected
-                      ? flightRowRow
+                      ? Row(children: FlightOffers)
                       : hotelRowRow, //flightRow ? flightRowRow : hotelRowRow,
                   row2: _isFlightSelected
-                      ? flightRowRow
+                      ? Row(children: FlightOffers)
                       : hotelRowRow, //flightRow ? flightRowRow : hotelRowRow,
                 ),
               ),
@@ -1182,7 +1232,7 @@ class _HomePageState extends State<HomePage>
                             width: MediaQuery.of(context).size.width < 800
                                 ? MediaQuery.of(context).size.width * 0.9
                                 : MediaQuery.of(context).size.width * 0.4,
-                            child: Image.asset('assets/images/flatt1.jpg'),
+                            child: Image.asset('assets/images/flatt1.jpg', fit: BoxFit.cover),
                           ),
                         ),
                       ),
@@ -1199,7 +1249,7 @@ class _HomePageState extends State<HomePage>
                             width: MediaQuery.of(context).size.width < 800
                                 ? MediaQuery.of(context).size.width * 0.8
                                 : MediaQuery.of(context).size.width * 0.4,
-                            child: Image.asset('assets/images/flatt2.jpg'),
+                            child: Image.asset('assets/images/flatt2.jpg', fit: BoxFit.cover,),
                           ),
                         ),
                       ),
@@ -1216,7 +1266,7 @@ class _HomePageState extends State<HomePage>
                             width: MediaQuery.of(context).size.width < 800
                                 ? MediaQuery.of(context).size.width * 0.8
                                 : MediaQuery.of(context).size.width * 0.4,
-                            child: Image.asset('assets/images/flatt1.jpg'),
+                            child: Image.asset('assets/images/flatt1.jpg', fit: BoxFit.cover),
                           ),
                         ),
                       ),
@@ -1233,7 +1283,7 @@ class _HomePageState extends State<HomePage>
                             width: MediaQuery.of(context).size.width < 800
                                 ? MediaQuery.of(context).size.width * 0.8
                                 : MediaQuery.of(context).size.width * 0.4,
-                            child: Image.asset('assets/images/flatt2.jpg'),
+                            child: Image.asset('assets/images/flatt2.jpg', fit: BoxFit.cover),
                           ),
                         ),
                       ),

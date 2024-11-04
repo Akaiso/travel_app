@@ -19,7 +19,7 @@ Widget socialMedia(String imageString, onTap){
             height: 20,
             width: 20,
             child: Image.asset(
-                "assets/images/linkedin.png")),
+                imageString)),
       ),
     ),
   );
