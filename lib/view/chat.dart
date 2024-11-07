@@ -2,6 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:google_generative_ai/google_generative_ai.dart';
 
 import '../model/provider.dart';
 import '../utils/font.dart';
@@ -14,9 +17,21 @@ class Chat extends StatefulWidget {
 }
 
 class _ChatState extends State<Chat> {
+
+
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final TextEditingController _messageController = TextEditingController();
+   String? aiResponse ;
+
+  Future<void> sendAiMessage() async {
+    final model = GenerativeModel(
+        model: "gemini-1.5-flash-latest", apiKey: dotenv.get("AI_API_KEY"));
+    final prompt = GetStorage().read("chatMessage");    //_messageController.text.trim();
+    final content = [Content.text(prompt)];
+    final response = await model.generateContent(content);
+    aiResponse = response.text;
+  }
 
   //Finction to send a message
   Future<void> _sendMessage() async {
@@ -86,21 +101,25 @@ class _ChatState extends State<Chat> {
       ),
       body: Column(
         children: [
-          const Text("This is for the purpose of state management with provider"),
-          Container(
-            color: Colors.orange,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("${context.watch<CounterProvider>().counter}"),
-            ),
-          ),
+          // const Text(
+          //     "This is for the purpose of state management with provider"),
+          // Container(
+          //   color: Colors.orange,
+          //   child: Padding(
+          //     padding: const EdgeInsets.all(8.0),
+          //     child: Text("${context.watch<CounterProvider>().counter}"),
+          //   ),
+          // ),
           const SizedBox(
             height: 20,
           ),
-          Text("${context.watch<ChatListProvider>().chat}"),
-          const Divider(thickness: 1,color: Colors.black, indent: 5,),
-          const Text("Chat begins here: "),
-
+         // Text("${context.watch<ChatListProvider>().chat}"),
+         //  const Divider(
+         //    thickness: 1,
+         //    color: Colors.black,
+         //    indent: 5,
+         //  ),
+         // const Text("Chat begins here: "),
           Expanded(
             child: ListView.builder(
               reverse: true,
@@ -111,7 +130,7 @@ class _ChatState extends State<Chat> {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.green,
+                      color: Colors.black,
                     ),
                     child: Column(
                       children: [
@@ -120,14 +139,13 @@ class _ChatState extends State<Chat> {
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Text(
-                                context.watch<ChatListProvider>().chat[index]),
+                                context.watch<ChatListProvider>().chat[index], style: const TextStyle(color: Colors.white),),
                           ),
                         )
                       ],
                     ),
                   ),
                 );
-
 
                 // Padding(
                 //   padding: const EdgeInsets.all(8.0),
@@ -203,7 +221,7 @@ class _ChatState extends State<Chat> {
                 ),
                 IconButton(
                   onPressed: () {
-                    setState(() {
+                    setState(() async {
                       validateChatField();
                       // _sendMessage();
                       debugPrint("${ChatListProvider().chat}");
@@ -213,10 +231,19 @@ class _ChatState extends State<Chat> {
                         context
                             .read<ChatListProvider>()
                             .updateChatList(_messageController.text);
+                        GetStorage().write("chatMessage" , _messageController.text);
+                        _messageController.clear();
                       }
-                      _messageController.clear();
+                      await sendAiMessage();
+                      if(context.mounted){
+                        context.read<ChatListProvider>().updateChatList(aiResponse!);
+                      }
+                      GetStorage().remove("chatMessage");
+
                       context.read<CounterProvider>().changeCounter();
-                      debugPrint("Hi");
+
+
+                      debugPrint("This is the aiResponse: $aiResponse");
                     });
                   },
                   icon: const Icon(Icons.send),

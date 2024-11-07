@@ -65,7 +65,7 @@ class _FlightOffersModelState extends State<FlightOffersModel> {
                           ),
                         ),
                          Padding(
-                          padding: EdgeInsets.only(top: 3.0, bottom: 8),
+                          padding: const EdgeInsets.only(top: 3.0, bottom: 8),
                           child: FittedBox(
                             child: Text(
                               widget.fromTo,

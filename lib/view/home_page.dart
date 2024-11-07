@@ -135,49 +135,233 @@ class _HomePageState extends State<HomePage>
       ),
     ];
 
-    List<Widget> FlightOffers = flightOffersModelList.map((e) => e).toList();
+    List<Widget> flightOffers = flightOffersModelList.map((e) => e).toList();
 
-    Row hotelRowRow = Row(
+    Row hotelRowRow1 = Row(
       children: [
-        Container(
-          height: MediaQuery.of(context).size.height * 0.26,
-          width: MediaQuery.of(context).size.width * 0.125,
-          color: Colors.blue,
+        Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width < 800
+                ? MediaQuery.of(context).size.width * 0.6
+                : MediaQuery.of(context).size.width * 0.2,
+            color: Colors.blue,
+            child: Image.asset("assets/images/h1.jfif", fit: BoxFit.cover),
+          ),
         ),
-        Container(
-          height: MediaQuery.of(context).size.height * 0.26,
-          width: MediaQuery.of(context).size.width * 0.125,
-          color: Colors.orange,
+        Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width < 800
+                ? MediaQuery.of(context).size.width * 0.6
+                : MediaQuery.of(context).size.width * 0.2,
+            color: Colors.blue,
+            child: Image.asset("assets/images/h2.jfif", fit: BoxFit.cover),
+          ),
         ),
-        Container(
-          height: MediaQuery.of(context).size.height * 0.26,
-          width: MediaQuery.of(context).size.width * 0.125,
-          color: Colors.blue,
+        Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width < 800
+                ? MediaQuery.of(context).size.width * 0.6
+                : MediaQuery.of(context).size.width * 0.2,
+            color: Colors.blue,
+            child: Image.asset("assets/images/h3.jfif", fit: BoxFit.cover),
+          ),
         ),
-        Container(
-          height: MediaQuery.of(context).size.height * 0.26,
-          width: MediaQuery.of(context).size.width * 0.125,
-          color: Colors.black,
+        Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width < 800
+                ? MediaQuery.of(context).size.width * 0.6
+                : MediaQuery.of(context).size.width * 0.2,
+            color: Colors.blue,
+            child: Image.asset("assets/images/h4.jfif", fit: BoxFit.cover),
+          ),
         ),
-        Container(
-          height: MediaQuery.of(context).size.height * 0.26,
-          width: MediaQuery.of(context).size.width * 0.125,
-          color: Colors.blue,
+        Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width < 800
+                ? MediaQuery.of(context).size.width * 0.6
+                : MediaQuery.of(context).size.width * 0.2,
+            color: Colors.blue,
+            child: Image.asset("assets/images/h5.jfif", fit: BoxFit.cover),
+          ),
         ),
-        Container(
-          height: MediaQuery.of(context).size.height * 0.26,
-          width: MediaQuery.of(context).size.width * 0.125,
-          color: Colors.green,
+        Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width < 800
+                ? MediaQuery.of(context).size.width * 0.6
+                : MediaQuery.of(context).size.width * 0.2,
+            color: Colors.blue,
+            child: Image.asset("assets/images/h6.jfif", fit: BoxFit.cover),
+          ),
         ),
-        Container(
-          height: MediaQuery.of(context).size.height * 0.26,
-          width: MediaQuery.of(context).size.width * 0.125,
-          color: Colors.blue,
+        Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width < 800
+                ? MediaQuery.of(context).size.width * 0.6
+                : MediaQuery.of(context).size.width * 0.2,
+            color: Colors.blue,
+            child: Image.asset("assets/images/h7.jfif", fit: BoxFit.cover),
+          ),
         ),
-        Container(
-          height: MediaQuery.of(context).size.height * 0.26,
-          width: MediaQuery.of(context).size.width * 0.125,
-          color: Colors.yellow,
+        Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width < 800
+                ? MediaQuery.of(context).size.width * 0.6
+                : MediaQuery.of(context).size.width * 0.2,
+            color: Colors.blue,
+            child: Image.asset("assets/images/h8.jfif", fit: BoxFit.cover),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width < 800
+                ? MediaQuery.of(context).size.width * 0.6
+                : MediaQuery.of(context).size.width * 0.2,
+            color: Colors.blue,
+            child: Image.asset("assets/images/h9.jfif", fit: BoxFit.cover),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width < 800
+                ? MediaQuery.of(context).size.width * 0.6
+                : MediaQuery.of(context).size.width * 0.2,
+            color: Colors.blue,
+            child: Image.asset("assets/images/h10.jfif", fit: BoxFit.cover),
+          ),
+        ),
+      ],
+    );
+    Row hotelRowRow2 = Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width < 800
+                ? MediaQuery.of(context).size.width * 0.6
+                : MediaQuery.of(context).size.width * 0.2,
+            color: Colors.blue,
+            child: Image.asset("assets/images/h11.jfif", fit: BoxFit.cover),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width < 800
+                ? MediaQuery.of(context).size.width * 0.6
+                : MediaQuery.of(context).size.width * 0.2,
+            color: Colors.blue,
+            child: Image.asset("assets/images/h12.jfif", fit: BoxFit.cover),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width < 800
+                ? MediaQuery.of(context).size.width * 0.6
+                : MediaQuery.of(context).size.width * 0.2,
+            color: Colors.blue,
+            child: Image.asset("assets/images/h13.jfif", fit: BoxFit.cover),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width < 800
+                ? MediaQuery.of(context).size.width * 0.6
+                : MediaQuery.of(context).size.width * 0.2,
+            color: Colors.blue,
+            child: Image.asset("assets/images/h14.jfif", fit: BoxFit.cover),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width < 800
+                ? MediaQuery.of(context).size.width * 0.6
+                : MediaQuery.of(context).size.width * 0.2,
+            color: Colors.blue,
+            child: Image.asset("assets/images/h15.jfif", fit: BoxFit.cover),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width < 800
+                ? MediaQuery.of(context).size.width * 0.6
+                : MediaQuery.of(context).size.width * 0.2,
+            color: Colors.blue,
+            child: Image.asset("assets/images/h16.jfif", fit: BoxFit.cover),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width < 800
+                ? MediaQuery.of(context).size.width * 0.6
+                : MediaQuery.of(context).size.width * 0.2,
+            color: Colors.blue,
+            child: Image.asset("assets/images/h17.jfif", fit: BoxFit.cover),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width < 800
+                ? MediaQuery.of(context).size.width * 0.6
+                : MediaQuery.of(context).size.width * 0.2,
+            color: Colors.blue,
+            child: Image.asset("assets/images/h18.jfif", fit: BoxFit.cover),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width < 800
+                ? MediaQuery.of(context).size.width * 0.6
+                : MediaQuery.of(context).size.width * 0.2,
+            color: Colors.blue,
+            child: Image.asset("assets/images/h19.jfif", fit: BoxFit.cover),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width < 800
+                ? MediaQuery.of(context).size.width * 0.6
+                : MediaQuery.of(context).size.width * 0.2,
+            color: Colors.blue,
+            child: Image.asset("assets/images/h20.jfif", fit: BoxFit.cover),
+          ),
         ),
       ],
     );
@@ -392,7 +576,7 @@ class _HomePageState extends State<HomePage>
                                       runSpacing: 4,
                                       children: [
                                         offeredServicesTabsNavigator(() {
-                                          Get.to(() => const BookFlight());
+                                          Get.to(() => const BookFlight(),transition: Transition.rightToLeft,duration: const Duration(milliseconds: 600), curve: Curves.easeInOut );
                                           // DioClient().availableFlightOffers(origin: "DXB", destination: "LON", departureDate: "2024-10-24", numberOfAdult: 1, nonStop: false);
                                         },
                                             " Flight ",
@@ -969,11 +1153,11 @@ class _HomePageState extends State<HomePage>
                     ),
                   ),
                   row1: _isFlightSelected
-                      ? Row(children: FlightOffers)
-                      : hotelRowRow, //flightRow ? flightRowRow : hotelRowRow,
+                      ? Row(children: flightOffers)
+                      : hotelRowRow1, //flightRow ? flightRowRow : hotelRowRow,
                   row2: _isFlightSelected
-                      ? Row(children: FlightOffers)
-                      : hotelRowRow, //flightRow ? flightRowRow : hotelRowRow,
+                      ? Row(children: flightOffers)
+                      : hotelRowRow2, //flightRow ? flightRowRow : hotelRowRow,
                 ),
               ),
               const SizedBox(
@@ -1232,7 +1416,8 @@ class _HomePageState extends State<HomePage>
                             width: MediaQuery.of(context).size.width < 800
                                 ? MediaQuery.of(context).size.width * 0.9
                                 : MediaQuery.of(context).size.width * 0.4,
-                            child: Image.asset('assets/images/flatt1.jpg', fit: BoxFit.cover),
+                            child: Image.asset('assets/images/eh1.jfif',
+                                fit: BoxFit.cover),
                           ),
                         ),
                       ),
@@ -1249,7 +1434,10 @@ class _HomePageState extends State<HomePage>
                             width: MediaQuery.of(context).size.width < 800
                                 ? MediaQuery.of(context).size.width * 0.8
                                 : MediaQuery.of(context).size.width * 0.4,
-                            child: Image.asset('assets/images/flatt2.jpg', fit: BoxFit.cover,),
+                            child: Image.asset(
+                              'assets/images/eh2.jfif',
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
@@ -1266,7 +1454,8 @@ class _HomePageState extends State<HomePage>
                             width: MediaQuery.of(context).size.width < 800
                                 ? MediaQuery.of(context).size.width * 0.8
                                 : MediaQuery.of(context).size.width * 0.4,
-                            child: Image.asset('assets/images/flatt1.jpg', fit: BoxFit.cover),
+                            child: Image.asset('assets/images/eh3.jfif',
+                                fit: BoxFit.cover),
                           ),
                         ),
                       ),
@@ -1283,7 +1472,116 @@ class _HomePageState extends State<HomePage>
                             width: MediaQuery.of(context).size.width < 800
                                 ? MediaQuery.of(context).size.width * 0.8
                                 : MediaQuery.of(context).size.width * 0.4,
-                            child: Image.asset('assets/images/flatt2.jpg', fit: BoxFit.cover),
+                            child: Image.asset('assets/images/eh4.jfif',
+                                fit: BoxFit.cover),
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 20.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.black,
+                            ),
+                            height: 300,
+                            width: MediaQuery.of(context).size.width < 800
+                                ? MediaQuery.of(context).size.width * 0.8
+                                : MediaQuery.of(context).size.width * 0.4,
+                            child: Image.asset('assets/images/eh5.jfif',
+                                fit: BoxFit.cover),
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 20.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.black,
+                            ),
+                            height: 300,
+                            width: MediaQuery.of(context).size.width < 800
+                                ? MediaQuery.of(context).size.width * 0.8
+                                : MediaQuery.of(context).size.width * 0.4,
+                            child: Image.asset('assets/images/eh6.jfif',
+                                fit: BoxFit.cover),
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 20.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.black,
+                            ),
+                            height: 300,
+                            width: MediaQuery.of(context).size.width < 800
+                                ? MediaQuery.of(context).size.width * 0.8
+                                : MediaQuery.of(context).size.width * 0.4,
+                            child: Image.asset('assets/images/eh7.jfif',
+                                fit: BoxFit.cover),
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 20.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.black,
+                            ),
+                            height: 300,
+                            width: MediaQuery.of(context).size.width < 800
+                                ? MediaQuery.of(context).size.width * 0.8
+                                : MediaQuery.of(context).size.width * 0.4,
+                            child: Image.asset('assets/images/eh8.jfif',
+                                fit: BoxFit.cover),
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 20.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.black,
+                            ),
+                            height: 300,
+                            width: MediaQuery.of(context).size.width < 800
+                                ? MediaQuery.of(context).size.width * 0.8
+                                : MediaQuery.of(context).size.width * 0.4,
+                            child: Image.asset('assets/images/eh9.jfif',
+                                fit: BoxFit.cover),
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 20.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.black,
+                            ),
+                            height: 300,
+                            width: MediaQuery.of(context).size.width < 800
+                                ? MediaQuery.of(context).size.width * 0.8
+                                : MediaQuery.of(context).size.width * 0.4,
+                            child: Image.asset('assets/images/eh10.jfif',
+                                fit: BoxFit.cover),
                           ),
                         ),
                       ),

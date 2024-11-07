@@ -4,11 +4,11 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
-import 'package:travel_app/view/flight_offer_search.dart';
 import 'package:travel_app/model/provider.dart';
 import 'package:travel_app/service/dio_client.dart';
 import 'package:travel_app/utils/colors.dart';
-
+import 'package:travel_app/view/flight_offer_search.dart';
+import 'package:travel_app/view/home_page.dart';
 import '../utils/data_bank.dart';
 import '../utils/font.dart';
 
@@ -147,6 +147,15 @@ class _BookFlightState extends State<BookFlight> {
         child: Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Get.to(() => const HomePage(),
+                //transition: Transition.leftToRight,
+                duration: const Duration(milliseconds: 600),
+                curve: Curves.easeInOut);
+          },
+          icon: const Icon(Icons.arrow_back),
+        ),
         centerTitle: true,
         title: Text("Flight", style: kBoldNormal()),
       ),
@@ -155,8 +164,8 @@ class _BookFlightState extends State<BookFlight> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              Center(child: Text("${context.watch<ChatListProvider>().chat}")),
-              Text("${context.watch<CounterProvider>().counter}"),
+              // Center(child: Text("${context.watch<ChatListProvider>().chat}")),
+              // Text("${context.watch<CounterProvider>().counter}"),
               const Text("Asterisk (*) indicate compulsory options",
                   style: TextStyle(color: Colors.white)),
               const SizedBox(
@@ -632,22 +641,22 @@ class _BookFlightState extends State<BookFlight> {
                   GetStorage().write("selectedTravelClass", travelClass);
                   //await DioClient().testApi();
                   await DioClient().availableFlightOffers(
-                    origin:  GetStorage().read(
+                    origin: GetStorage().read(
                         "editedOriginSearchController.textFromBookFlightClass"),
-                    destination:  GetStorage().read(
+                    destination: GetStorage().read(
                         "editedDestinationSearchController.textFromBookFlightClass"),
                     departureDate: selectedDepartureDate == ' '
                         ? selectedDepartureDate =
-                             DateTime.now().toString().split(' ')[0]
-                        :  GetStorage()
+                            DateTime.now().toString().split(' ')[0]
+                        : GetStorage()
                             .read("selectedDepartureDateFromBookFlightClass"),
-                    numberOfAdult:  GetStorage().read("selectedNumberOfAdults"),
-                    nonStop:  GetStorage().read("selectedNonStop"),
-                   // returnDate: GetStorage().read("selectedReturnDate"),
+                    numberOfAdult: GetStorage().read("selectedNumberOfAdults"),
+                    nonStop: GetStorage().read("selectedNonStop"),
+                    // returnDate: GetStorage().read("selectedReturnDate"),
                     // numberOfChildren:
-                        // GetStorage().read("selectedNumberOfChildren"),
+                    // GetStorage().read("selectedNumberOfChildren"),
                     // numberOfInfants:
-                        //  GetStorage().read("selectedNumberOfInfants"),
+                    //  GetStorage().read("selectedNumberOfInfants"),
                     // travelClass:  GetStorage().read("selectedTravelClass"),
                   );
                   debugPrint("The nonstop value is: $nonStop");
@@ -662,7 +671,8 @@ class _BookFlightState extends State<BookFlight> {
                   if (GetStorage()
                           .read("searchListResponseFromDioClientClass") ==
                       null) {
-                    const GetSnackBar(title: "An error occurred; try again");
+                    const GetSnackBar(
+                        title: "An error occurred; try again");
                   } else {
                     Get.to(() => const FlightOfferSearchDisplay());
                   }

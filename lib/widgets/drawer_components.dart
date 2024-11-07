@@ -152,34 +152,44 @@ List drawerContent = [
   ),
 ];
 
+List<Widget> drawerPages = [
+  const BookFlight(),
+  const BookHotel(),
+  const BookRide(),
+  const Holidays(),
+  const ContactUs(),
+  const HomePage(),
+  const Chat(),
+  const ContactUs(),
+  const CurrencyConverterScreen()
+];
 
-List<Widget> drawerPages = [const BookFlight(), const BookHotel(), const BookRide(), const Holidays(), const ContactUs(), const HomePage(), const Chat(), const ContactUs(), const CurrencyConverterScreen()];
-
-
-
-Future<void> toWhatsApp(BuildContext context) async{
+Future<void> toWhatsApp(BuildContext context) async {
   const String phoneNumber = "+2348086652587";
-  const String message= "Hello I need assistance on Trips Guard!";
-  final Uri whatsappUri = Uri.parse('https://wa.me/$phoneNumber?text=${Uri.encodeFull(message)}'); //('whatsapp://send?phone=$phoneNumber&text=$message') ;
+  const String message = "Hello I need assistance on Trips Guard!";
+  final Uri whatsappUri = Uri.parse(
+      'https://wa.me/$phoneNumber?text=${Uri.encodeFull(message)}'); //('whatsapp://send?phone=$phoneNumber&text=$message') ;
 
-  if(await canLaunchUrl(whatsappUri ) ){
+  if (await canLaunchUrl(whatsappUri)) {
     await launchUrl(whatsappUri);
-  }else{
-    if(context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Whatsapp not installed")));
+  } else {
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Whatsapp not installed")));
     }
   }
 }
 
-Future<void> makePhoneCall(BuildContext context) async{
+Future<void> makePhoneCall(BuildContext context) async {
   const String phoneNumber = "+2348086652587";
   final Uri phoneUrl = Uri(scheme: 'tel', path: phoneNumber);
 
-  if(await canLaunchUrl(phoneUrl)){
+  if (await canLaunchUrl(phoneUrl)) {
     await launchUrl(phoneUrl);
-  }else{
-    if(context.mounted){
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Phone app not installed")));
+  } else {
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Phone app not installed")));
     }
   }
 }

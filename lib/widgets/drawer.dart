@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../utils/colors.dart';
 import 'drawer_components.dart';
@@ -72,7 +74,8 @@ class _DrawerClassState extends State<DrawerClass> {
                               makePhoneCall(context);
                             }
                             else {
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=> drawerPages[index]));
+                             // Navigator.push(context, MaterialPageRoute(builder: (context)=> drawerPages[index]));
+                              Get.to(()=>  drawerPages[index], transition: Transition.rightToLeft,duration: const Duration(milliseconds: 600), curve: Curves.easeInOut);
                             }
                           } ,//(){Get.to(()=>const ContactUs());},//,
                           title: drawerContent[index]),
