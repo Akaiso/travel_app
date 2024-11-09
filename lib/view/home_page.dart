@@ -576,7 +576,12 @@ class _HomePageState extends State<HomePage>
                                       runSpacing: 4,
                                       children: [
                                         offeredServicesTabsNavigator(() {
-                                          Get.to(() => const BookFlight(),transition: Transition.rightToLeft,duration: const Duration(milliseconds: 600), curve: Curves.easeInOut );
+                                          Get.to(() => const BookFlight(),
+                                              transition:
+                                                  Transition.rightToLeft,
+                                              duration: const Duration(
+                                                  milliseconds: 600),
+                                              curve: Curves.easeInOut);
                                           // DioClient().availableFlightOffers(origin: "DXB", destination: "LON", departureDate: "2024-10-24", numberOfAdult: 1, nonStop: false);
                                         },
                                             " Flight ",

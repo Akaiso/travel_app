@@ -8,7 +8,6 @@ import 'package:travel_app/model/provider.dart';
 import 'package:travel_app/service/dio_client.dart';
 import 'package:travel_app/utils/colors.dart';
 import 'package:travel_app/view/flight_offer_search.dart';
-import 'package:travel_app/view/home_page.dart';
 import '../utils/data_bank.dart';
 import '../utils/font.dart';
 
@@ -147,15 +146,15 @@ class _BookFlightState extends State<BookFlight> {
         child: Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Get.to(() => const HomePage(),
-                //transition: Transition.leftToRight,
-                duration: const Duration(milliseconds: 600),
-                curve: Curves.easeInOut);
-          },
-          icon: const Icon(Icons.arrow_back),
-        ),
+        // leading: IconButton(
+        //   onPressed: () {
+        //     Get.to(() => const HomePage(),
+        //         //transition: Transition.leftToRight,
+        //         duration: const Duration(milliseconds: 600),
+        //         curve: Curves.easeInOut);
+        //   },
+        //   icon: const Icon(Icons.arrow_back),
+        // ),
         centerTitle: true,
         title: Text("Flight", style: kBoldNormal()),
       ),

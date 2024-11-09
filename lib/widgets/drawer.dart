@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../controller/drawer_controller.dart';
 import '../utils/colors.dart';
 import 'drawer_components.dart';
 
@@ -13,6 +14,7 @@ class DrawerClass extends StatefulWidget {
 }
 
 class _DrawerClassState extends State<DrawerClass> {
+  MyDrawerController myDrawerController = MyDrawerController();
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -66,18 +68,21 @@ class _DrawerClassState extends State<DrawerClass> {
                   return Column(
                     children: [
                       ListTile(
-                          onTap: (){
+                          onTap: () async {
                             Navigator.pop(context);
-                            if(index == 5 ){
-                              toWhatsApp(context);
-                            }else if(index == 4 ){
-                              makePhoneCall(context);
+                            if (index == 5) {
+                              myDrawerController
+                                  .toWhatsApp(context); //toWhatsApp(context);
+                            } else if (index == 4) {
+                              myDrawerController.makePhoneCall(context);
+                            } else {
+                              // Navigator.push(context, MaterialPageRoute(builder: (context)=> drawerPages[index]));
+                              Get.to(() => drawerPages[index],
+                                  transition: Transition.rightToLeft,
+                                  duration: const Duration(milliseconds: 600),
+                                  curve: Curves.easeInOut);
                             }
-                            else {
-                             // Navigator.push(context, MaterialPageRoute(builder: (context)=> drawerPages[index]));
-                              Get.to(()=>  drawerPages[index], transition: Transition.rightToLeft,duration: const Duration(milliseconds: 600), curve: Curves.easeInOut);
-                            }
-                          } ,//(){Get.to(()=>const ContactUs());},//,
+                          }, //(){Get.to(()=>const ContactUs());},//,
                           title: drawerContent[index]),
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20),
